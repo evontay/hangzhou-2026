@@ -3,7 +3,7 @@
 **Seven days through China's most poetic landscape.**  
 West Lake's misted mornings, Suzhou's silken gardens, and the slow rhythm of canals that have flowed for a thousand years.
 
-🌐 **[View the itinerary →](https://evontay.github.io/hangzhou-2026/)**
+🌐 **[View the itinerary →](https://www.evontay.com/hangzhou-2026/)**
 
 ---
 

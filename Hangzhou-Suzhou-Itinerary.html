@@ -534,6 +534,28 @@
     .block-photo.revealed { height: 160px; }
     .block-photo img { height: 160px; }
   }
+
+  /* ---------- LINKED IMAGE HOVER ---------- */
+  .block-photo a, .scene-card a { display: block; line-height: 0; }
+  .block-photo a img, .scene-card a img {
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+  .block-photo a:hover img {
+    filter: contrast(1.04) saturate(0.98) brightness(1.1);
+    transform: scale(1.015);
+  }
+  .scene-card a:hover img {
+    filter: contrast(1.03) saturate(0.96) brightness(1.08);
+  }
+  /* ---------- BOOKING CALLOUT LINK ---------- */
+  .booking-callout a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    letter-spacing: inherit;
+  }
+  .booking-callout a:hover { opacity: 0.82; }
 </style>
 </head>
 <body>
@@ -572,7 +594,7 @@
 </div>
 <!-- West Lake illustration -->
 <div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
-<img alt="West Lake at dawn — Leifeng Pagoda and weeping willows" class="scene-card-svg" src="images/west-lake.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/>
+<a href="https://commons.wikimedia.org/wiki/File:Leifeng_Pagoda_and_Willow_Tree_across_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dawn — Leifeng Pagoda and weeping willows" class="scene-card-svg" src="images/west-lake.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
 <div class="scene-card-caption">West Lake at dawn — willows trailing in still water, a pagoda on the southern shore.</div>
 </div>
 <!-- Day 1 -->
@@ -614,7 +636,7 @@
 <div class="block-title">Dinner near West Lake</div>
 <div class="block-title-cn">武林夜市</div>
 <div class="block-text">A short Didi to Wulin or the Hubin Road area near West Lake. Get your first taste of Hangzhou cuisine — perhaps <strong>dongpo pork</strong> or <strong>West Lake fish in vinegar sauce</strong> — and a first glimpse of the lake by night.</div>
-<div class="block-photo"><img alt="West Lake at dusk, Hangzhou" src="images/west-lake-day.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.083756_View_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dusk, Hangzhou" src="images/west-lake-day.jpg"/></a></div></div>
 </div>
 </div>
 </div>
@@ -633,7 +655,7 @@
 <div class="block-title">Bai Causeway at first light</div>
 <div class="block-title-cn">白堤 · 断桥</div>
 <div class="block-text">Begin at <strong>Broken Bridge</strong> — the start of Bai Causeway, named for the Tang dynasty poet Bai Juyi. Walk west through Solitary Hill Island, past Yue Fei Temple, then onto Su Causeway. Six kilometres of willows, lotus pads and ancient stone bridges. The morning mist is the photograph you came for.</div>
-<div class="block-photo"><img alt="Broken Bridge and Bai Causeway, West Lake" src="images/bai-causeway.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Duan_Qiao.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Broken Bridge and Bai Causeway, West Lake" src="images/bai-causeway.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">11:30</div>
@@ -649,7 +671,7 @@
 <div class="block-title-cn">三潭印月</div>
 <div class="block-text">Take the boat to the small island in the centre of the lake — the one printed on the back of every one-yuan note. Three stone pagodas rise from the water; on the night of the Mid-Autumn moon, candles are lit inside each one and the reflections multiply across the water.</div>
 <div class="tip">Boat tickets ~¥70. The island makes the lake feel infinite.</div>
-<div class="block-photo"><img alt="Three Pools Mirroring the Moon, West Lake" src="images/three-pools.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Three_Pools_Mirroring_the_Moon-pool.JPG" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Three Pools Mirroring the Moon, West Lake" src="images/three-pools.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">16:00</div>
@@ -657,7 +679,7 @@
 <div class="block-title">Leifeng Pagoda at sunset</div>
 <div class="block-title-cn">雷峰塔</div>
 <div class="block-text">Climb the pagoda on the lake's south shore for the panoramic view — West Lake, the city, and the Wuyue mountains beyond. The pagoda was rebuilt in 2002 with an elevator inside the ancient ruins, which is either a miracle or a sacrilege depending on your taste.</div>
-<div class="block-photo"><img alt="Leifeng Pagoda and West Lake" src="images/leifeng-pagoda.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20100719_Leifeng_Pagoda_and_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Leifeng Pagoda and West Lake" src="images/leifeng-pagoda.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">19:00</div>
@@ -665,14 +687,14 @@
 <div class="block-title">Hefang Old Street</div>
 <div class="block-title-cn">河坊街</div>
 <div class="block-text">A short walk down from Leifeng — Hangzhou's restored old commercial street. Snacks, traditional medicine shops, and the smell of stinky tofu mingling with osmanthus. Dinner here is easy.</div>
-<div class="booking-callout">Optional: Impression West Lake show — book ahead</div>
-<div class="block-photo"><img alt="Hefang Old Street, Hangzhou" src="images/hefang-street.jpg"/></div></div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/hangzhou/impression-west-lake-10758551/" rel="noopener noreferrer" target="_blank">Optional: Impression West Lake show — book ahead</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20191108_160504_Richtone(HDR).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Hefang Old Street, Hangzhou" src="images/hefang-street.jpg"/></a></div></div>
 </div>
 </div>
 </div>
 <!-- Tea fields illustration -->
 <div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
-<img alt="Longjing tea district, Hangzhou — terraced green plantations" class="scene-card-svg" src="images/longjing-tea.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/>
+<a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_district_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing tea district, Hangzhou — terraced green plantations" class="scene-card-svg" src="images/longjing-tea.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
 <div class="scene-card-caption">Meijiawu — terraces of Longjing, picked one leaf at a time.</div>
 </div>
 <!-- Day 3 -->
@@ -691,7 +713,7 @@
 <div class="block-title-cn">灵隐寺</div>
 <div class="block-text">Founded in 328 AD — older than almost anything you've ever set foot inside. Set in a forested valley west of the city, with monks in saffron robes, smoke from a thousand sticks of incense, and the cliffs of <strong>Feilai Feng</strong> carved with Buddhist figures over a thousand years old.</div>
 <div class="tip">A Friday morning is much quieter than a weekend. Reserve via Lingyin's WeChat the day before.</div>
-<div class="block-photo"><img alt="Lingyin Temple, Hangzhou" src="images/lingyin-temple.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20231124_Lingyin_Temple_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingyin Temple, Hangzhou" src="images/lingyin-temple.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">12:00</div>
@@ -699,7 +721,7 @@
 <div class="block-title">Lunch in Longjing village</div>
 <div class="block-title-cn">龙井村</div>
 <div class="block-text">Ten minutes from Lingyin. Eat at a tea farmer's home — a simple meal of <strong>tea-smoked chicken</strong>, river shrimp, and seasonal greens, with fresh Longjing tea poured throughout.</div>
-<div class="block-photo"><img alt="Longjing village, Hangzhou" src="images/longjing-village.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_village_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing village, Hangzhou" src="images/longjing-village.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">14:00</div>
@@ -715,14 +737,14 @@
 <div class="block-title">Su Causeway at sundown</div>
 <div class="block-title-cn">苏堤春晓</div>
 <div class="block-text">Built nine hundred years ago by the poet-governor Su Dongpo. End the day where it began — but on the opposite shore, watching the lake flush pink and gold.</div>
-<div class="block-photo"><img alt="Su Causeway, West Lake at dusk" src="images/su-causeway.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Xi_Hu.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Su Causeway, West Lake at dusk" src="images/su-causeway.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">20:00</div>
 <div class="block-body">
 <div class="block-title">Optional: Grand Canal night cruise</div>
 <div class="block-text">From Wulin Gate, near your hotel. The canal's banks are lit, the boats are slow, and the families along the water at night are doing exactly what their grandparents' grandparents did in this same place.</div>
-<div class="block-photo"><img alt="West Lake and Hangzhou at night" src="images/canal-night.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.190358_Nightview_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake and Hangzhou at night" src="images/canal-night.jpg"/></a></div></div>
 </div>
 </div>
 </div>
@@ -772,7 +794,7 @@
 </div>
 <!-- Pingjiang canal illustration -->
 <div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
-<img alt="Pingjiang Road, Suzhou — canal-side houses and stone bridges" class="scene-card-svg" src="images/pingjiang-road.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/>
+<a href="https://commons.wikimedia.org/wiki/File:Riverside_of_Pingjiang_Road%2C_Gusu%2C_Suzhou%2C_Jiangsu%2C_China%2C_215000.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Pingjiang Road, Suzhou — canal-side houses and stone bridges" class="scene-card-svg" src="images/pingjiang-road.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
 <div class="scene-card-caption">Pingjiang Road at dusk — lanterns reflected in the canal that has flowed for seven hundred years.</div>
 </div>
 <!-- Day 1 -->
@@ -825,7 +847,7 @@
 <div class="block-title">Tiger Hill</div>
 <div class="block-title-cn">虎丘</div>
 <div class="block-text">A small hill outside the old city — burial place of King He Lu, founder of Suzhou, who supposedly lies beneath the pond at the foot of the hill alongside three thousand swords. Crowning the summit: <strong>Yunyan Pagoda</strong>, a thousand years old, leaning slightly north — the Leaning Tower of Pisa, but older and built of brick.</div>
-<div class="block-photo"><img alt="Tiger Hill with Yunyan Pagoda, Suzhou" src="images/tiger-hill.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Tigerhill.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Tiger Hill with Yunyan Pagoda, Suzhou" src="images/tiger-hill.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">11:30</div>
@@ -833,7 +855,7 @@
 <div class="block-title">Boat to Shantang</div>
 <div class="block-title-cn">山塘街</div>
 <div class="block-text">From Tiger Hill, take the canal boat back along <strong>Shantang Street</strong> — a 1,200-year-old waterway commissioned by the poet Bai Juyi when he was governor here. Older, slightly more local feel than Pingjiang. Lunch at a noodle shop along the way; <strong>Suzhou-style noodles (苏式汤面)</strong> are a quiet revelation — clear broth, hand-pulled noodles, a few pieces of belly pork or river fish.</div>
-<div class="block-photo"><img alt="Shantang Street canal, Suzhou" src="images/shantang-street.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:1_shantang_street_canal_2023.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Shantang Street canal, Suzhou" src="images/shantang-street.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">14:00</div>
@@ -841,7 +863,7 @@
 <div class="block-title">Lingering Garden</div>
 <div class="block-title-cn">留园</div>
 <div class="block-text">One of the four greatest gardens of China, UNESCO listed. Smaller and more refined than Humble Administrator's. Famous for its rockeries, calligraphy steles, and a 6.5-metre-tall <strong>Taihu stone</strong> — a piece of fossilised limestone shaped by water and prized as the soul of any classical garden.</div>
-<div class="block-photo"><img alt="Lingering Garden, Suzhou" src="images/lingering-garden.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20240203_Lingering_Garden_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingering Garden, Suzhou" src="images/lingering-garden.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">19:00</div>
@@ -857,14 +879,14 @@
 <div class="block-title">Master of the Nets — by night</div>
 <div class="block-title-cn">网师园 · 夜游</div>
 <div class="block-text">The smallest of the great gardens, opened at night with red lanterns lighting the courtyards and live performances of <strong>Kunqu opera</strong> and <strong>Pingtan</strong> in the pavilions — moving from one tiny stage to the next as you walk through. Genuinely unforgettable.</div>
-<div class="booking-callout">Book ahead — Trip.com, 2-3 days in advance</div>
-<div class="block-photo"><img alt="Master of the Nets Garden, Suzhou" src="images/master-of-nets.jpg"/></div></div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/master-of-nets-garden-10558597/" rel="noopener noreferrer" target="_blank">Book ahead — Trip.com, 2-3 days in advance</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:66234-Suzhou_(49176983826).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Master of the Nets Garden, Suzhou" src="images/master-of-nets.jpg"/></a></div></div>
 </div>
 </div>
 </div>
 <!-- Garden illustration -->
 <div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
-<img alt="Humble Administrator's Garden, Suzhou — pavilions, pond, and classical landscape" class="scene-card-svg" src="images/suzhou-garden.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/>
+<a href="https://commons.wikimedia.org/wiki/File:2015-09-24-121330_-_Suzhou%2C_Garten_des_bescheidenen_Beamten.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Humble Administrator's Garden, Suzhou — pavilions, pond, and classical landscape" class="scene-card-svg" src="images/suzhou-garden.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
 <div class="scene-card-caption">A classical garden — bamboo, a moon gate, a Taihu stone in the pond.</div>
 </div>
 <!-- Day 3 -->
@@ -882,7 +904,7 @@
 <div class="block-title">Humble Administrator's Garden</div>
 <div class="block-title-cn">拙政园</div>
 <div class="block-text">The garden you came to Suzhou for. The largest classical garden in China — built in 1509 by a retired official who, the saying goes, "humbly" administered the world's most extravagant retirement project. Five hundred years of poets have walked these paths. Be at the gate when it opens.</div>
-<div class="booking-callout">Critical: pre-book on Trip.com, 3–7 days ahead. Daily cap.</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/humble-administrator-s-garden-82473/" rel="noopener noreferrer" target="_blank">Critical: pre-book on Trip.com, 3–7 days ahead. Daily cap.</a></div>
 </div>
 </div>
 <div class="block">
@@ -891,8 +913,8 @@
 <div class="block-title">Suzhou Museum</div>
 <div class="block-title-cn">苏州博物馆</div>
 <div class="block-text">Designed by <strong>I.M. Pei</strong>, born in Suzhou — his last great commission, completed in 2006. White walls, dark roofs, a stone garden you'll want to photograph from every angle. The collection is small and exquisite: Song dynasty calligraphy, Ming porcelain, Buddhist relics.</div>
-<div class="booking-callout">Free, but reservation required — book 7 days ahead</div>
-<div class="block-photo"><img alt="Suzhou Museum designed by I.M. Pei" src="images/suzhou-museum.jpg"/></div></div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/suzhou-museum-82121/" rel="noopener noreferrer" target="_blank">Free, but reservation required — book 7 days ahead</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Suzhou_Museum_-_new_buildings.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Suzhou Museum designed by I.M. Pei" src="images/suzhou-museum.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">14:30</div>
@@ -900,7 +922,7 @@
 <div class="block-title">Lion Grove Garden</div>
 <div class="block-title-cn">狮子林</div>
 <div class="block-text">Five minutes' walk from the museum. UNESCO listed, but completely different in spirit — a <strong>maze of rockeries</strong> that look like crouching lions, with caves and tunnels you can walk through. Built in 1342 by Buddhist monks. Children adore it; adults too.</div>
-<div class="block-photo"><img alt="Lion Grove Garden rockeries, Suzhou" src="images/lion-grove.jpg"/></div></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20090905_Suzhou_Lion_Grove_Garden_4502.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lion Grove Garden rockeries, Suzhou" src="images/lion-grove.jpg"/></a></div></div>
 </div>
 <div class="block">
 <div class="block-time">19:00</div>

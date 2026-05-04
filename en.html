@@ -210,13 +210,28 @@
 
   .day-date {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 64px;
+    font-size: 80px;
     line-height: 1;
     font-weight: 500;
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2em;
   }
 
   .day-date em { font-style: italic; color: var(--jade-deep); }
+
+  .day-month {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    font-style: normal;
+    line-height: 1;
+    padding-bottom: 0.1em;
+  }
 
   .day-weekday {
     font-family: 'Cormorant Garamond', serif;
@@ -489,7 +504,8 @@
     .section-number { font-size: 140px; }
     .day { grid-template-columns: 1fr; gap: 32px; padding-top: 48px; margin-bottom: 72px; }
     .day-meta { position: static; }
-    .day-date { font-size: 48px; }
+    .day-date { font-size: 56px; }
+    .day-month { font-size: 13px; }
     .day-weekday { font-size: 22px; }
     .block { grid-template-columns: 70px 1fr; gap: 18px; }
     .block-time { font-size: 20px; }
@@ -608,7 +624,7 @@
 <div>Departure<strong>19 May</strong></div>
 <div>Return<strong>27 May</strong></div>
 <div>Cities<strong>Hangzhou · Suzhou</strong></div>
-<div>Travellers<strong>Three</strong></div>
+<div>Travellers<strong>Four</strong></div>
 </div>
 </div>
 <!-- ============ HANGZHOU ============ -->
@@ -631,7 +647,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day One · Arrival</div>
-<div class="day-date"><em>20</em> May</div>
+<div class="day-date"><em>20</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Wednesday</div>
 <div class="day-summary">A soft landing. Drop bags at the canal-side hotel, wander the old warehouse district on your doorstep, and let Hangzhou unfold gently.</div>
 </div>
@@ -674,7 +690,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Two · West Lake</div>
-<div class="day-date"><em>21</em> May</div>
+<div class="day-date"><em>21</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Thursday</div>
 <div class="day-summary">The full West Lake circuit — causeways, pagodas, and an island painted onto the one-yuan note. Start before the crowds, end with lanterns on the water.</div>
 </div>
@@ -731,7 +747,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Three · Tea &amp; Temple</div>
-<div class="day-date"><em>22</em> May</div>
+<div class="day-date"><em>22</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Friday</div>
 <div class="day-summary">West into the hills — incense at one of China's oldest temples, then green tea fields straight from the basket of last month's harvest.</div>
 </div>
@@ -782,7 +798,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Four · Departure morning</div>
-<div class="day-date"><em>23</em> May</div>
+<div class="day-date"><em>23</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Saturday</div>
 <div class="day-summary">A final breakfast, a last walk along the canal, and onto the train.</div>
 </div>
@@ -831,7 +847,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day One · Arrival</div>
-<div class="day-date"><em>23</em> May</div>
+<div class="day-date"><em>23</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Saturday</div>
 <div class="day-summary">Step off the train, drop bags, and walk into a 700-year-old neighbourhood. Pingjiang Road is on your doorstep.</div>
 </div>
@@ -866,7 +882,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Two · Tiger Hill &amp; Shantang</div>
-<div class="day-date"><em>24</em> May</div>
+<div class="day-date"><em>24</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Sunday</div>
 <div class="day-summary">The leaning pagoda, a boat ride home along the city's oldest waterway, and a garden lit by lanterns at night.</div>
 </div>
@@ -923,7 +939,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Three · The great gardens</div>
-<div class="day-date"><em>25</em> May</div>
+<div class="day-date"><em>25</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Monday</div>
 <div class="day-summary">Weekend crowds gone, city back to itself. The big gardens, a museum by I.M. Pei, a labyrinth of stones — and a long, slow Suzhou banquet to close the trip.</div>
 </div>
@@ -975,7 +991,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">Day Four · Homeward</div>
-<div class="day-date"><em>26</em> May</div>
+<div class="day-date"><em>26</em> <span class="day-month">May</span></div>
 <div class="day-weekday">Tuesday</div>
 <div class="day-summary">An early train, the airport, the long flight home. Hold on to a tin of Longjing for the journey.</div>
 </div>

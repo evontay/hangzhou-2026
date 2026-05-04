@@ -210,13 +210,27 @@
 
   .day-date {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 64px;
+    font-size: 80px;
     line-height: 1;
     font-weight: 500;
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2em;
   }
 
   .day-date em { font-style: italic; color: var(--jade-deep); }
+
+  .day-month {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--ink-mid);
+    font-style: normal;
+    line-height: 1;
+    padding-bottom: 0.1em;
+  }
 
   .day-weekday {
     font-family: 'Cormorant Garamond', serif;
@@ -489,7 +503,8 @@
     .section-number { font-size: 140px; }
     .day { grid-template-columns: 1fr; gap: 32px; padding-top: 48px; margin-bottom: 72px; }
     .day-meta { position: static; }
-    .day-date { font-size: 48px; }
+    .day-date { font-size: 56px; }
+    .day-month { font-size: 13px; }
     .day-weekday { font-size: 22px; }
     .block { grid-template-columns: 70px 1fr; gap: 18px; }
     .block-time { font-size: 20px; }
@@ -605,7 +620,7 @@
 <div>出发日<strong>五月十九日</strong></div>
 <div>归程日<strong>五月二十七日</strong></div>
 <div>目的地<strong>杭州 · 苏州</strong></div>
-<div>同行人数<strong>三人</strong></div>
+<div>同行人数<strong>四人</strong></div>
 </div>
 </div>
 <!-- ============ HANGZHOU ============ -->
@@ -628,7 +643,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第一天 · 抵达</div>
-<div class="day-date"><em>20</em> 五月</div>
+<div class="day-date"><em>20</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期三</div>
 <div class="day-summary">轻松落地。将行李放置于运河边的酒店，在门前的古老仓储街区漫步，让杭州徐徐向你展开。</div>
 </div>
@@ -671,7 +686,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第二天 · 西湖</div>
-<div class="day-date"><em>21</em> 五月</div>
+<div class="day-date"><em>21</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期四</div>
 <div class="day-summary">环游西湖全程——白堤苏堤、宝塔林立，以及那个被印在一元人民币背面的小岛。赶在人潮之前出发，以灯光倒映水面作结。</div>
 </div>
@@ -728,7 +743,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第三天 · 茶园与古寺</div>
-<div class="day-date"><em>22</em> 五月</div>
+<div class="day-date"><em>22</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期五</div>
 <div class="day-summary">西行入山——在中国最古老的庙宇之一燃香祈福，再踏入刚完成春采的翠绿茶园。</div>
 </div>
@@ -779,7 +794,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第四天 · 离城早晨</div>
-<div class="day-date"><em>23</em> 五月</div>
+<div class="day-date"><em>23</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期六</div>
 <div class="day-summary">最后一顿早餐，沿运河最后一次散步，然后登上列车。</div>
 </div>
@@ -828,7 +843,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第一天 · 抵达</div>
-<div class="day-date"><em>23</em> 五月</div>
+<div class="day-date"><em>23</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期六</div>
 <div class="day-summary">下车，放下行李，踏入一个有着七百年历史的街区。平江路就在你的门前。</div>
 </div>
@@ -863,7 +878,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第二天 · 虎丘与山塘</div>
-<div class="day-date"><em>24</em> 五月</div>
+<div class="day-date"><em>24</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期日</div>
 <div class="day-summary">倾斜的宝塔，沿城内最古老水道乘船而归，以及夜晚灯笼点亮的古典园林。</div>
 </div>
@@ -920,7 +935,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第三天 · 名园之旅</div>
-<div class="day-date"><em>25</em> 五月</div>
+<div class="day-date"><em>25</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期一</div>
 <div class="day-summary">周末人潮散去，城市回归本色。游览名园，探访贝聿铭设计的博物馆，穿行奇石迷宫——最后以一场漫长而从容的苏州宴席为旅程画上句点。</div>
 </div>
@@ -972,7 +987,7 @@
 <div class="day">
 <div class="day-meta">
 <div class="day-tag">第四天 · 踏上归途</div>
-<div class="day-date"><em>26</em> 五月</div>
+<div class="day-date"><em>26</em> <span class="day-month">五月</span></div>
 <div class="day-weekday">星期二</div>
 <div class="day-summary">乘早班列车，抵达机场，踏上漫长的归途。带上一罐龙井相伴旅程。</div>
 </div>
@@ -1027,7 +1042,7 @@
 <ul>
 <li><span>杭州东→苏州（5月23日）</span><span>5月8日开售</span></li>
 <li><span>苏州→杭州东（5月26日）</span><span>5月11日开售</span></li>
-<li><span>三人同次交易一并购票</span><span>——</span></li>
+<li><span>四人同次交易一并购票</span><span>——</span></li>
 <li><span>选择高铁二等座</span><span>约115元</span></li>
 </ul>
 </div>

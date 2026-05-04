@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hangzhou &amp; Suzhou — A Family Itinerary, May 2026</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&amp;family=Noto+Serif+SC:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #3d3d3d;
+    --ink-mid: #5a5a5a;
+    --paper: #f7f3ea;
+    --paper-warm: #ede5d3;
+    --rice: #fbf8f0;
+    --jade: #3a5a4d;
+    --jade-deep: #1f3528;
+    --vermilion: #9c2a2a;
+    --vermilion-deep: #6e1818;
+    --gold: #a07c3a;
+    --mist: #b8b4a7;
+    --line: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 18px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 100vh;
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 2px solid var(--line);
+    background: var(--rice);
+  }
+
+  .cover-mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .cover-mark .seal {
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--vermilion);
+    color: var(--vermilion);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 600;
+    transform: rotate(-3deg);
+    background: var(--rice);
+  }
+
+  .cover-title { margin: 60px 0; max-width: 1000px; }
+
+  .cover-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+  .cover-title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 11vw, 156px);
+    line-height: 0.92;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .cover-title h1 em { font-style: italic; color: var(--jade-deep); }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 30px);
+    margin-top: 36px;
+    color: var(--ink-soft);
+    max-width: 680px;
+    line-height: 1.45;
+  }
+
+  .cover-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    color: var(--vermilion);
+    margin-top: 20px;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    border-top: 2px solid var(--line);
+    padding-top: 36px;
+  }
+
+  .cover-meta div { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+  .cover-meta strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; letter-spacing: 0; text-transform: none; margin-top: 8px; color: var(--ink); }
+
+  /* ---------- SECTION ---------- */
+  section {
+    padding: 100px 48px;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: end;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px;
+    line-height: 0.85;
+    font-weight: 500;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--ink);
+  }
+
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(54px, 7vw, 100px);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title h2 em { font-style: italic; color: var(--jade-deep); }
+
+  .section-title .city-cn {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--vermilion);
+    font-size: 36px;
+    letter-spacing: 0.4em;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .section-title .description {
+    margin-top: 28px;
+    font-size: 19px;
+    max-width: 600px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- DAY ---------- */
+  .day {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+    margin-bottom: 100px;
+    border-top: 1px dashed var(--mist);
+    padding-top: 60px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .day:first-of-type { border-top: 2px solid var(--line); }
+
+  .day-meta { position: sticky; top: 32px; align-self: start; }
+
+  .day-tag {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .day-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .day-date em { font-style: italic; color: var(--jade-deep); }
+
+  .day-weekday {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .day-summary {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 18px 22px;
+    background: var(--rice);
+    border-left: 3px solid var(--vermilion);
+  }
+
+  .day-content { display: flex; flex-direction: column; gap: 40px; }
+
+  /* ---------- BLOCKS ---------- */
+  .block { display: grid; grid-template-columns: 90px 1fr; gap: 28px; align-items: start; }
+
+  .block-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--vermilion);
+    border-top: 2px solid var(--ink);
+    padding-top: 10px;
+  }
+
+  .block-body { border-top: 1px solid var(--mist); padding-top: 10px; }
+
+  .block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .block-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--jade);
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .block-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .block-text strong { color: var(--vermilion-deep); font-weight: 600; }
+
+  .tip {
+    display: block;
+    margin-top: 16px;
+    padding: 12px 18px;
+    background: var(--paper-warm);
+    border: 1px solid var(--mist);
+    font-size: 15px;
+    color: var(--ink);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .tip::before { content: "✦  "; color: var(--vermilion); font-style: normal; font-weight: 600; }
+
+  /* ---------- ILLUSTRATED CARD (instead of photos) ---------- */
+  .scene-card {
+    margin: 32px 0;
+    padding: 40px 32px;
+    background: linear-gradient(135deg, var(--rice) 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--mist);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scene-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(58, 90, 77, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(156, 42, 42, 0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .scene-card-svg {
+    display: block;
+    width: 100%;
+    height: 220px;
+    margin-bottom: 20px;
+  }
+
+  .scene-card-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* ---------- INTERLUDE ---------- */
+  .interlude {
+    padding: 100px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .interlude .train-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    color: var(--gold);
+    margin-bottom: 28px;
+    letter-spacing: 0.4em;
+  }
+
+  .interlude h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .interlude h3 em { font-style: italic; color: var(--gold); }
+
+  .interlude .route {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    color: var(--paper);
+    margin-top: 28px;
+    letter-spacing: 0.3em;
+  }
+
+  .interlude .details {
+    margin-top: 32px;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mist);
+    font-weight: 600;
+  }
+
+  /* ---------- LOGISTICS ---------- */
+  .logistics {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 100px 48px;
+  }
+
+  .logistics .section-header h2 { color: var(--paper); }
+  .logistics .section-header h2 em { color: var(--gold); }
+  .logistics .section-number { color: transparent; -webkit-text-stroke: 2px var(--paper); }
+  .logistics .section-title .description { color: var(--paper); }
+  .logistics .section-title .city-cn { color: var(--gold); }
+
+  .logistics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logistics-item { border-top: 2px solid var(--paper); padding-top: 28px; }
+
+  .logistics-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--paper);
+  }
+
+  .logistics-item h4 em { font-style: italic; color: var(--gold); }
+
+  .logistics-item ul { margin-top: 16px; padding-left: 0; list-style: none; }
+  .logistics-item li {
+    font-size: 16px;
+    color: var(--paper);
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(247, 243, 234, 0.2);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    line-height: 1.5;
+  }
+  .logistics-item li span:last-child { color: var(--gold); font-style: italic; white-space: nowrap; flex-shrink: 0; }
+
+  /* ---------- COLOPHON ---------- */
+  .colophon {
+    padding: 100px 48px;
+    text-align: center;
+    background: var(--rice);
+  }
+
+  .colophon-mark {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    color: var(--vermilion);
+    letter-spacing: 0.5em;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .colophon p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ink);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .colophon .signoff {
+    margin-top: 40px;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  /* ---------- BOOKING CALLOUT ---------- */
+  .booking-callout {
+    background: var(--vermilion);
+    color: var(--rice);
+    padding: 6px 14px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  /* ---------- INK SPLATTER DECORATIVE ---------- */
+  .ink-mark {
+    position: absolute;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--vermilion);
+    opacity: 0.05;
+    font-size: 280px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 600;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    body { font-size: 17px; }
+    .cover { padding: 40px 24px; }
+    .cover-meta { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    section { padding: 60px 24px; }
+    .section-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+    .section-number { font-size: 140px; }
+    .day { grid-template-columns: 1fr; gap: 32px; padding-top: 48px; margin-bottom: 72px; }
+    .day-meta { position: static; }
+    .day-date { font-size: 48px; }
+    .day-weekday { font-size: 22px; }
+    .block { grid-template-columns: 70px 1fr; gap: 18px; }
+    .block-time { font-size: 20px; }
+    .block-title { font-size: 26px; }
+    .block-text { font-size: 16px; }
+    .scene-card { padding: 24px 20px; }
+    .scene-card-svg { height: 160px; }
+    .logistics-grid { grid-template-columns: 1fr; gap: 36px; }
+    .logistics { padding: 60px 24px; }
+    .interlude { padding: 70px 24px; }
+    .colophon { padding: 70px 24px; }
+    .colophon p { font-size: 20px; }
+  }
+
+  @media (max-width: 500px) {
+    .block { grid-template-columns: 1fr; gap: 8px; }
+    .block-time { border-top: none; padding-top: 0; font-size: 22px; font-weight: 600; }
+    .block-body { border-top: 1px solid var(--ink); padding-top: 12px; }
+  }
+
+  /* ---------- BLOCK PHOTOS (scroll-expand) ---------- */
+  .block-photo {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 22px;
+    transition: height 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease 0.2s;
+  }
+  .block-photo.revealed {
+    height: 200px;
+    opacity: 1;
+  }
+  .block-photo img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: contrast(1.02) saturate(0.92);
+  }
+  @media (max-width: 900px) {
+    .block-photo.revealed { height: 160px; }
+    .block-photo img { height: 160px; }
+  }
+
+  /* ---------- LINKED IMAGE HOVER ---------- */
+  .block-photo a, .scene-card a { display: block; line-height: 0; }
+  .block-photo a img, .scene-card a img {
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+  .block-photo a:hover img {
+    filter: contrast(1.04) saturate(0.98) brightness(1.1);
+    transform: scale(1.015);
+  }
+  .scene-card a:hover img {
+    filter: contrast(1.03) saturate(0.96) brightness(1.08);
+  }
+  /* ---------- BOOKING CALLOUT LINK ---------- */
+  .booking-callout a {
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: inherit;
+  }
+  .booking-callout a:hover { opacity: 0.82; }
+
+  /* ---------- LANGUAGE SWITCHER ---------- */
+  .lang-switch {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rice);
+    border: 1px solid var(--line);
+    padding: 7px 16px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .lang-switch a { color: var(--ink-soft); text-decoration: none; }
+  .lang-switch a.active { color: var(--vermilion); }
+  .lang-switch a:hover { color: var(--vermilion); }
+  .lang-switch .sep { color: var(--mist); }
+</style>
+</head>
+<body><div class="lang-switch"><a href="index.html">← Language</a><span class="sep">·</span><a class="active" href="en.html">EN</a><span class="sep">·</span><a href="zh.html">中文</a></div>
+<!-- ============ COVER ============ -->
+<div class="cover">
+<div class="cover-mark">
+<div>
+<div>A Family Travel Journal</div>
+<div style="margin-top: 4px;">Vol. I  ·  May 2026</div>
+</div>
+<div class="seal">遊</div>
+</div>
+<div class="cover-title">
+<div class="cover-eyebrow">Above heaven there is paradise — below, Suzhou &amp; Hangzhou</div>
+<h1>Among<br/>the <em>Lakes</em><br/>&amp; Gardens.</h1>
+<div class="cover-subtitle">Seven days through China's most poetic landscape — West Lake's misted mornings, Suzhou's silken gardens, and the slow rhythm of canals that have flowed for a thousand years.</div>
+<div class="cover-chinese">上有天堂 · 下有蘇杭</div>
+</div>
+<div class="cover-meta">
+<div>Departure<strong>19 May</strong></div>
+<div>Return<strong>27 May</strong></div>
+<div>Cities<strong>Hangzhou · Suzhou</strong></div>
+<div>Travellers<strong>Three</strong></div>
+</div>
+</div>
+<!-- ============ HANGZHOU ============ -->
+<section style="position: relative;">
+<div class="ink-mark" style="top: 60px; right: 60px;">杭</div>
+<div class="section-header">
+<div class="section-number">Ⅰ</div>
+<div class="section-title">
+<h2>Hangzhou,<br/><em>three nights</em>by the lake.</h2>
+<div class="city-cn">杭 州</div>
+<p class="description">Marco Polo called it the finest city in the world. Eight centuries on, Hangzhou still moves at the pace of a tea ceremony — willows trailing in West Lake, the scent of Longjing tea in the western hills, and the Grand Canal threading quietly past your hotel window.</p>
+</div>
+</div>
+<!-- West Lake illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Leifeng_Pagoda_and_Willow_Tree_across_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dawn — Leifeng Pagoda and weeping willows" class="scene-card-svg" src="images/west-lake.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">West Lake at dawn — willows trailing in still water, a pagoda on the southern shore.</div>
+</div>
+<!-- Day 1 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day One · Arrival</div>
+<div class="day-date"><em>20</em> May</div>
+<div class="day-weekday">Wednesday</div>
+<div class="day-summary">A soft landing. Drop bags at the canal-side hotel, wander the old warehouse district on your doorstep, and let Hangzhou unfold gently.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">11:10</div>
+<div class="block-body">
+<div class="block-title">Touchdown at HGH</div>
+<div class="block-title-cn">杭州萧山国际机场</div>
+<div class="block-text">Land at Hangzhou Xiaoshan, terminal 4 (international arrivals). Clear immigration — Singapore passports enter visa-free. A Didi to Cheery Dragon Canal Hotel runs around 50 minutes; better than the metro with luggage.</div>
+<div class="tip">Set up Alipay and a VPN before you fly. Cash is rarely accepted anywhere, and Google / WhatsApp won't work without a VPN.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">Hotel check-in &amp; lunch</div>
+<div class="block-text">Cheery Dragon Canal Hotel sits along the Grand Canal — a UNESCO heritage waterway that flows from Beijing all the way to Hangzhou. After settling in, find lunch nearby.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">15:30</div>
+<div class="block-body">
+<div class="block-title">Qiaoxi Historic Block</div>
+<div class="block-title-cn">桥西历史街区</div>
+<div class="block-text">Right beside your hotel — Ming and Qing dynasty warehouses converted into shops, galleries and tea houses along the canal's western bank. The <strong>China Knife &amp; Scissor Museum</strong>, <strong>Umbrella Museum</strong> and <strong>Fan Museum</strong> are all here, all free, and unexpectedly charming.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">Dinner near West Lake</div>
+<div class="block-title-cn">武林夜市</div>
+<div class="block-text">A short Didi to Wulin or the Hubin Road area near West Lake. Get your first taste of Hangzhou cuisine — perhaps <strong>dongpo pork</strong> or <strong>West Lake fish in vinegar sauce</strong> — and a first glimpse of the lake by night.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.083756_View_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dusk, Hangzhou" src="images/west-lake-day.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Two · West Lake</div>
+<div class="day-date"><em>21</em> May</div>
+<div class="day-weekday">Thursday</div>
+<div class="day-summary">The full West Lake circuit — causeways, pagodas, and an island painted onto the one-yuan note. Start before the crowds, end with lanterns on the water.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:00</div>
+<div class="block-body">
+<div class="block-title">Bai Causeway at first light</div>
+<div class="block-title-cn">白堤 · 断桥</div>
+<div class="block-text">Begin at <strong>Broken Bridge</strong> — the start of Bai Causeway, named for the Tang dynasty poet Bai Juyi. Walk west through Solitary Hill Island, past Yue Fei Temple, then onto Su Causeway. Six kilometres of willows, lotus pads and ancient stone bridges. The morning mist is the photograph you came for.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Duan_Qiao.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Broken Bridge and Bai Causeway, West Lake" src="images/bai-causeway.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">Lunch lakeside</div>
+<div class="block-text">Try <strong>Green Tea Restaurant (绿茶)</strong> on the lake — affordable, packed with locals, signature Hangzhou flavours. Or <strong>Grandma's Home (外婆家)</strong> for the same in a slightly grander setting.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">13:30</div>
+<div class="block-body">
+<div class="block-title">Three Pools Mirroring the Moon</div>
+<div class="block-title-cn">三潭印月</div>
+<div class="block-text">Take the boat to the small island in the centre of the lake — the one printed on the back of every one-yuan note. Three stone pagodas rise from the water; on the night of the Mid-Autumn moon, candles are lit inside each one and the reflections multiply across the water.</div>
+<div class="tip">Boat tickets ~¥70. The island makes the lake feel infinite.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Three_Pools_Mirroring_the_Moon-pool.JPG" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Three Pools Mirroring the Moon, West Lake" src="images/three-pools.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">16:00</div>
+<div class="block-body">
+<div class="block-title">Leifeng Pagoda at sunset</div>
+<div class="block-title-cn">雷峰塔</div>
+<div class="block-text">Climb the pagoda on the lake's south shore for the panoramic view — West Lake, the city, and the Wuyue mountains beyond. The pagoda was rebuilt in 2002 with an elevator inside the ancient ruins, which is either a miracle or a sacrilege depending on your taste.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20100719_Leifeng_Pagoda_and_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Leifeng Pagoda and West Lake" src="images/leifeng-pagoda.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">Hefang Old Street</div>
+<div class="block-title-cn">河坊街</div>
+<div class="block-text">A short walk down from Leifeng — Hangzhou's restored old commercial street. Snacks, traditional medicine shops, and the smell of stinky tofu mingling with osmanthus. Dinner here is easy.</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/hangzhou/impression-west-lake-10758551/" rel="noopener noreferrer" target="_blank">Optional: Impression West Lake show — book ahead</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20191108_160504_Richtone(HDR).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Hefang Old Street, Hangzhou" src="images/hefang-street.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Tea fields illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_district_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing tea district, Hangzhou — terraced green plantations" class="scene-card-svg" src="images/longjing-tea.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">Meijiawu — terraces of Longjing, picked one leaf at a time.</div>
+</div>
+<!-- Day 3 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Three · Tea &amp; Temple</div>
+<div class="day-date"><em>22</em> May</div>
+<div class="day-weekday">Friday</div>
+<div class="day-summary">West into the hills — incense at one of China's oldest temples, then green tea fields straight from the basket of last month's harvest.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:30</div>
+<div class="block-body">
+<div class="block-title">Lingyin Temple</div>
+<div class="block-title-cn">灵隐寺</div>
+<div class="block-text">Founded in 328 AD — older than almost anything you've ever set foot inside. Set in a forested valley west of the city, with monks in saffron robes, smoke from a thousand sticks of incense, and the cliffs of <strong>Feilai Feng</strong> carved with Buddhist figures over a thousand years old.</div>
+<div class="tip">A Friday morning is much quieter than a weekend. Reserve via Lingyin's WeChat the day before.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20231124_Lingyin_Temple_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingyin Temple, Hangzhou" src="images/lingyin-temple.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">12:00</div>
+<div class="block-body">
+<div class="block-title">Lunch in Longjing village</div>
+<div class="block-title-cn">龙井村</div>
+<div class="block-text">Ten minutes from Lingyin. Eat at a tea farmer's home — a simple meal of <strong>tea-smoked chicken</strong>, river shrimp, and seasonal greens, with fresh Longjing tea poured throughout.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_village_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing village, Hangzhou" src="images/longjing-village.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">Meijiawu Tea Plantation</div>
+<div class="block-title-cn">梅家坞茶园</div>
+<div class="block-text">Walk through neat green terraces of <strong>Longjing (Dragon Well) tea</strong> — China's most famous green tea. May falls right after the spring harvest, when the leaves are at their finest. Visit a tea house, watch the pan-frying, and buy a tin to take home — the difference between this and supermarket green tea is the difference between coffee and instant.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">16:30</div>
+<div class="block-body">
+<div class="block-title">Su Causeway at sundown</div>
+<div class="block-title-cn">苏堤春晓</div>
+<div class="block-text">Built nine hundred years ago by the poet-governor Su Dongpo. End the day where it began — but on the opposite shore, watching the lake flush pink and gold.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Xi_Hu.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Su Causeway, West Lake at dusk" src="images/su-causeway.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">20:00</div>
+<div class="block-body">
+<div class="block-title">Optional: Grand Canal night cruise</div>
+<div class="block-text">From Wulin Gate, near your hotel. The canal's banks are lit, the boats are slow, and the families along the water at night are doing exactly what their grandparents' grandparents did in this same place.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.190358_Nightview_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake and Hangzhou at night" src="images/canal-night.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Day 4 morning -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Four · Departure morning</div>
+<div class="day-date"><em>23</em> May</div>
+<div class="day-weekday">Saturday</div>
+<div class="day-summary">A final breakfast, a last walk along the canal, and onto the train.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">07:30</div>
+<div class="block-body">
+<div class="block-title">Breakfast — xiaolongbao</div>
+<div class="block-text">Find a local <strong>xiaolongbao</strong> shop near the hotel. Soup dumplings done properly are a Jiangnan birthright.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">09:30</div>
+<div class="block-body">
+<div class="block-title">Check out — Hangzhou East</div>
+<div class="block-text">Didi to Hangzhou East Railway Station, around thirty minutes. Aim to be at the station by 10:00 for the 10:30 train.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ INTERLUDE TRAIN ============ -->
+<div class="interlude">
+<div class="train-icon">— · —</div>
+<h3>By <em>bullet train</em><br/>to the Venice of the East.</h3>
+<div class="route">杭 州 ━━━━ 蘇 州</div>
+<div class="details">G-class · 1h 30m · ~CNY 115</div>
+</div>
+<!-- ============ SUZHOU ============ -->
+<section style="position: relative;">
+<div class="ink-mark" style="top: 60px; right: 60px;">蘇</div>
+<div class="section-header">
+<div class="section-number">Ⅱ</div>
+<div class="section-title">
+<h2>Suzhou,<br/><em>among the gardens</em>&amp; canals.</h2>
+<div class="city-cn">蘇 州</div>
+<p class="description">For two and a half thousand years, Suzhou has been the city of poets, silk merchants and exiled scholars who built private gardens to imitate the universe. Cendre Hotel sits in the heart of Gusu — the old city — within walking distance of cobbled canals and the most beautiful gardens in the world.</p>
+</div>
+</div>
+<!-- Pingjiang canal illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Riverside_of_Pingjiang_Road%2C_Gusu%2C_Suzhou%2C_Jiangsu%2C_China%2C_215000.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Pingjiang Road, Suzhou — canal-side houses and stone bridges" class="scene-card-svg" src="images/pingjiang-road.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">Pingjiang Road at dusk — lanterns reflected in the canal that has flowed for seven hundred years.</div>
+</div>
+<!-- Day 1 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day One · Arrival</div>
+<div class="day-date"><em>23</em> May</div>
+<div class="day-weekday">Saturday</div>
+<div class="day-summary">Step off the train, drop bags, and walk into a 700-year-old neighbourhood. Pingjiang Road is on your doorstep.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">12:30</div>
+<div class="block-body">
+<div class="block-title">Cendre Hotel</div>
+<div class="block-text">Taxi from Suzhou Station, ten minutes. Cendre sits at <strong>99 Heyuan Road</strong> — the heart of Gusu District, the historic centre. Drop bags, lunch nearby.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">Pingjiang Road</div>
+<div class="block-title-cn">平江路</div>
+<div class="block-text">A canal-side street unchanged in seven hundred years. Stone bridges, lattice windows, water lapping at the foundations of houses still lived in. Walk slowly. Try <strong>squirrel-shaped mandarin fish (松鼠桂鱼)</strong>, the local signature, or sit in a teahouse with <strong>Biluochun</strong> — Suzhou's famous green tea.</div>
+<div class="tip">A small wooden boat ride down the canal (~¥80) is one of the loveliest things you can do in China.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">18:00</div>
+<div class="block-body">
+<div class="block-title">Pingtan in a teahouse</div>
+<div class="block-title-cn">评弹</div>
+<div class="block-text">A traditional Suzhou storytelling form — one or two performers, a pipa, a sanxian, and centuries-old ballads sung in the soft Wu dialect. Cendre's front desk can point you to the closest current venue. An hour will change how you hear the city.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Two · Tiger Hill &amp; Shantang</div>
+<div class="day-date"><em>24</em> May</div>
+<div class="day-weekday">Sunday</div>
+<div class="day-summary">The leaning pagoda, a boat ride home along the city's oldest waterway, and a garden lit by lanterns at night.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">09:00</div>
+<div class="block-body">
+<div class="block-title">Tiger Hill</div>
+<div class="block-title-cn">虎丘</div>
+<div class="block-text">A small hill outside the old city — burial place of King He Lu, founder of Suzhou, who supposedly lies beneath the pond at the foot of the hill alongside three thousand swords. Crowning the summit: <strong>Yunyan Pagoda</strong>, a thousand years old, leaning slightly north — the Leaning Tower of Pisa, but older and built of brick.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Tigerhill.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Tiger Hill with Yunyan Pagoda, Suzhou" src="images/tiger-hill.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">Boat to Shantang</div>
+<div class="block-title-cn">山塘街</div>
+<div class="block-text">From Tiger Hill, take the canal boat back along <strong>Shantang Street</strong> — a 1,200-year-old waterway commissioned by the poet Bai Juyi when he was governor here. Older, slightly more local feel than Pingjiang. Lunch at a noodle shop along the way; <strong>Suzhou-style noodles (苏式汤面)</strong> are a quiet revelation — clear broth, hand-pulled noodles, a few pieces of belly pork or river fish.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:1_shantang_street_canal_2023.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Shantang Street canal, Suzhou" src="images/shantang-street.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">Lingering Garden</div>
+<div class="block-title-cn">留园</div>
+<div class="block-text">One of the four greatest gardens of China, UNESCO listed. Smaller and more refined than Humble Administrator's. Famous for its rockeries, calligraphy steles, and a 6.5-metre-tall <strong>Taihu stone</strong> — a piece of fossilised limestone shaped by water and prized as the soul of any classical garden.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20240203_Lingering_Garden_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingering Garden, Suzhou" src="images/lingering-garden.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">Songhelou for dinner</div>
+<div class="block-title-cn">松鹤楼</div>
+<div class="block-text">A two-hundred-and-fifty-year-old restaurant on Guanqian Street — the legendary inventor of squirrel-shaped mandarin fish. Order it once in your life, here.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">20:30</div>
+<div class="block-body">
+<div class="block-title">Master of the Nets — by night</div>
+<div class="block-title-cn">网师园 · 夜游</div>
+<div class="block-text">The smallest of the great gardens, opened at night with red lanterns lighting the courtyards and live performances of <strong>Kunqu opera</strong> and <strong>Pingtan</strong> in the pavilions — moving from one tiny stage to the next as you walk through. Genuinely unforgettable.</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/master-of-nets-garden-10558597/" rel="noopener noreferrer" target="_blank">Book ahead — Trip.com, 2-3 days in advance</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:66234-Suzhou_(49176983826).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Master of the Nets Garden, Suzhou" src="images/master-of-nets.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Garden illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:2015-09-24-121330_-_Suzhou%2C_Garten_des_bescheidenen_Beamten.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Humble Administrator's Garden, Suzhou — pavilions, pond, and classical landscape" class="scene-card-svg" src="images/suzhou-garden.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">A classical garden — bamboo, a moon gate, a Taihu stone in the pond.</div>
+</div>
+<!-- Day 3 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Three · The great gardens</div>
+<div class="day-date"><em>25</em> May</div>
+<div class="day-weekday">Monday</div>
+<div class="day-summary">Weekend crowds gone, city back to itself. The big gardens, a museum by I.M. Pei, a labyrinth of stones — and a long, slow Suzhou banquet to close the trip.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:30</div>
+<div class="block-body">
+<div class="block-title">Humble Administrator's Garden</div>
+<div class="block-title-cn">拙政园</div>
+<div class="block-text">The garden you came to Suzhou for. The largest classical garden in China — built in 1509 by a retired official who, the saying goes, "humbly" administered the world's most extravagant retirement project. Five hundred years of poets have walked these paths. Be at the gate when it opens.</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/humble-administrator-s-garden-82473/" rel="noopener noreferrer" target="_blank">Critical: pre-book on Trip.com, 3–7 days ahead. Daily cap.</a></div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">Suzhou Museum</div>
+<div class="block-title-cn">苏州博物馆</div>
+<div class="block-text">Designed by <strong>I.M. Pei</strong>, born in Suzhou — his last great commission, completed in 2006. White walls, dark roofs, a stone garden you'll want to photograph from every angle. The collection is small and exquisite: Song dynasty calligraphy, Ming porcelain, Buddhist relics.</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/suzhou-museum-82121/" rel="noopener noreferrer" target="_blank">Free, but reservation required — book 7 days ahead</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Suzhou_Museum_-_new_buildings.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Suzhou Museum designed by I.M. Pei" src="images/suzhou-museum.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:30</div>
+<div class="block-body">
+<div class="block-title">Lion Grove Garden</div>
+<div class="block-title-cn">狮子林</div>
+<div class="block-text">Five minutes' walk from the museum. UNESCO listed, but completely different in spirit — a <strong>maze of rockeries</strong> that look like crouching lions, with caves and tunnels you can walk through. Built in 1342 by Buddhist monks. Children adore it; adults too.</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20090905_Suzhou_Lion_Grove_Garden_4502.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lion Grove Garden rockeries, Suzhou" src="images/lion-grove.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">Wumen Renjia — a Suzhou banquet</div>
+<div class="block-title-cn">吴门人家</div>
+<div class="block-text">A traditional Suzhou banquet in a courtyard restaurant near Pingjiang. <strong>Squirrel fish</strong>, <strong>Suzhou-style braised pork</strong>, <strong>osmanthus glutinous rice</strong>, <strong>biluochun-poached prawns</strong>. Slow, ceremonial, exactly the right way to end a trip.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">21:00</div>
+<div class="block-body">
+<div class="block-title">A last walk along the canals</div>
+<div class="block-text">Pingjiang Road after the day-trippers have left. The lanterns reflecting in still water, locals on stoops, somewhere a pipa playing through an open window.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 4 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">Day Four · Homeward</div>
+<div class="day-date"><em>26</em> May</div>
+<div class="day-weekday">Tuesday</div>
+<div class="day-summary">An early train, the airport, the long flight home. Hold on to a tin of Longjing for the journey.</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">09:00</div>
+<div class="block-body">
+<div class="block-title">Check out · Suzhou Station</div>
+<div class="block-text">Taxi to Suzhou Station for the 10:00 G-class to Hangzhou East. Built-in buffer for traffic.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">Hangzhou East — onwards to HGH</div>
+<div class="block-text">Off the train and straight to Hangzhou Xiaoshan airport. Metro Line 1 then 7, or Didi (faster, ~CNY 100). At the airport for 13:00 — comfortable buffer before the 15:55 Cathay Pacific flight to Hong Kong, then home to Singapore via CX715.</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">00:45</div>
+<div class="block-body">
+<div class="block-title">Singapore</div>
+<div class="block-text">Land at Changi T4, in the small hours of May 27. A week of mist, gardens, and tea.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ LOGISTICS ============ -->
+<div class="logistics">
+<div class="section-header">
+<div class="section-number">Ⅲ</div>
+<div class="section-title">
+<h2>The <em>practicalities</em>.</h2>
+<div class="city-cn">準 備</div>
+<p class="description">A short guide to the small things — bookings, apps, and the everyday logistics that make travel in China surprisingly smooth once you have them sorted.</p>
+</div>
+</div>
+<div class="logistics-grid">
+<div class="logistics-item">
+<h4>Before <em>departure</em></h4>
+<ul>
+<li><span>Alipay — bind international card</span><span>before flight</span></li>
+<li><span>VPN — for Google, WhatsApp, IG</span><span>before flight</span></li>
+<li><span>Apple Maps works in China</span><span>—</span></li>
+<li><span>Didi app for taxis</span><span>—</span></li>
+<li><span>Singapore passport: visa-free 30 days</span><span>—</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>Trains <em>to book on Trip.com</em></h4>
+<ul>
+<li><span>Hangzhou East → Suzhou (May 23)</span><span>booking opens May 8</span></li>
+<li><span>Suzhou → Hangzhou East (May 26)</span><span>booking opens May 11</span></li>
+<li><span>Book all three travellers in one transaction</span><span>—</span></li>
+<li><span>Choose 2nd class G-trains</span><span>~¥115</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>Suzhou <em>tickets — book ahead</em></h4>
+<ul>
+<li><span>Humble Administrator's Garden (25 May)</span><span>3–7 days ahead</span></li>
+<li><span>Suzhou Museum (25 May)</span><span>7 days ahead</span></li>
+<li><span>Master of the Nets night tour (24 May)</span><span>2–3 days ahead</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>Hangzhou <em>tickets</em></h4>
+<ul>
+<li><span>Lingyin Temple reservation</span><span>day before</span></li>
+<li><span>Impression West Lake show</span><span>2–3 days ahead</span></li>
+<li><span>Leifeng Pagoda</span><span>day-of</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>Weather &amp; <em>packing</em></h4>
+<ul>
+<li><span>Late May: 22–28°C, occasional rain</span><span>—</span></li>
+<li><span>Layers, compact umbrella</span><span>—</span></li>
+<li><span>Comfortable walking shoes — essential</span><span>—</span></li>
+<li><span>Pingjiang stones get slippery in rain</span><span>—</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>A few <em>watch-outs</em></h4>
+<ul>
+<li><span>Sat 23 May — Pingjiang very crowded</span><span>go evening</span></li>
+<li><span>Sun 24 May — Tiger Hill busier</span><span>go early</span></li>
+<li><span>Mon 25 May — best garden day</span><span>weekend tourists gone</span></li>
+<li><span>Bring physical passport to all trains</span><span>—</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- ============ COLOPHON ============ -->
+<div class="colophon">
+<div class="colophon-mark">遊</div>
+<p>"Above there is heaven, below there are Suzhou and Hangzhou."<br/>— A Chinese proverb, attributed to the 13th century</p>
+<div class="signoff">— compiled with love · May 2026 —</div>
+</div>
+<script>
+(function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.block-photo').forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+</script></body>
+</html>

@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>杭州与苏州——家庭旅行手记，二〇二六年五月</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&amp;family=Noto+Serif+SC:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #3d3d3d;
+    --ink-mid: #5a5a5a;
+    --paper: #f7f3ea;
+    --paper-warm: #ede5d3;
+    --rice: #fbf8f0;
+    --jade: #3a5a4d;
+    --jade-deep: #1f3528;
+    --vermilion: #9c2a2a;
+    --vermilion-deep: #6e1818;
+    --gold: #a07c3a;
+    --mist: #b8b4a7;
+    --line: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 18px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 100vh;
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 2px solid var(--line);
+    background: var(--rice);
+  }
+
+  .cover-mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .cover-mark .seal {
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--vermilion);
+    color: var(--vermilion);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 600;
+    transform: rotate(-3deg);
+    background: var(--rice);
+  }
+
+  .cover-title { margin: 60px 0; max-width: 1000px; }
+
+  .cover-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+  .cover-title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 11vw, 156px);
+    line-height: 0.92;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .cover-title h1 em { font-style: italic; color: var(--jade-deep); }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 30px);
+    margin-top: 36px;
+    color: var(--ink-soft);
+    max-width: 680px;
+    line-height: 1.45;
+  }
+
+  .cover-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    color: var(--vermilion);
+    margin-top: 20px;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    border-top: 2px solid var(--line);
+    padding-top: 36px;
+  }
+
+  .cover-meta div { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+  .cover-meta strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; letter-spacing: 0; text-transform: none; margin-top: 8px; color: var(--ink); }
+
+  /* ---------- SECTION ---------- */
+  section {
+    padding: 100px 48px;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: end;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px;
+    line-height: 0.85;
+    font-weight: 500;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--ink);
+  }
+
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(54px, 7vw, 100px);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title h2 em { font-style: italic; color: var(--jade-deep); }
+
+  .section-title .city-cn {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--vermilion);
+    font-size: 36px;
+    letter-spacing: 0.4em;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .section-title .description {
+    margin-top: 28px;
+    font-size: 19px;
+    max-width: 600px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- DAY ---------- */
+  .day {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+    margin-bottom: 100px;
+    border-top: 1px dashed var(--mist);
+    padding-top: 60px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .day:first-of-type { border-top: 2px solid var(--line); }
+
+  .day-meta { position: sticky; top: 32px; align-self: start; }
+
+  .day-tag {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .day-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .day-date em { font-style: italic; color: var(--jade-deep); }
+
+  .day-weekday {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .day-summary {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 18px 22px;
+    background: var(--rice);
+    border-left: 3px solid var(--vermilion);
+  }
+
+  .day-content { display: flex; flex-direction: column; gap: 40px; }
+
+  /* ---------- BLOCKS ---------- */
+  .block { display: grid; grid-template-columns: 90px 1fr; gap: 28px; align-items: start; }
+
+  .block-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--vermilion);
+    border-top: 2px solid var(--ink);
+    padding-top: 10px;
+  }
+
+  .block-body { border-top: 1px solid var(--mist); padding-top: 10px; }
+
+  .block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .block-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--jade);
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .block-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .block-text strong { color: var(--vermilion-deep); font-weight: 600; }
+
+  .tip {
+    display: block;
+    margin-top: 16px;
+    padding: 12px 18px;
+    background: var(--paper-warm);
+    border: 1px solid var(--mist);
+    font-size: 15px;
+    color: var(--ink);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .tip::before { content: "✦  "; color: var(--vermilion); font-style: normal; font-weight: 600; }
+
+  /* ---------- ILLUSTRATED CARD (instead of photos) ---------- */
+  .scene-card {
+    margin: 32px 0;
+    padding: 40px 32px;
+    background: linear-gradient(135deg, var(--rice) 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--mist);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scene-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(58, 90, 77, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(156, 42, 42, 0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .scene-card-svg {
+    display: block;
+    width: 100%;
+    height: 220px;
+    margin-bottom: 20px;
+  }
+
+  .scene-card-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* ---------- INTERLUDE ---------- */
+  .interlude {
+    padding: 100px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .interlude .train-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    color: var(--gold);
+    margin-bottom: 28px;
+    letter-spacing: 0.4em;
+  }
+
+  .interlude h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .interlude h3 em { font-style: italic; color: var(--gold); }
+
+  .interlude .route {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    color: var(--paper);
+    margin-top: 28px;
+    letter-spacing: 0.3em;
+  }
+
+  .interlude .details {
+    margin-top: 32px;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mist);
+    font-weight: 600;
+  }
+
+  /* ---------- LOGISTICS ---------- */
+  .logistics {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 100px 48px;
+  }
+
+  .logistics .section-header h2 { color: var(--paper); }
+  .logistics .section-header h2 em { color: var(--gold); }
+  .logistics .section-number { color: transparent; -webkit-text-stroke: 2px var(--paper); }
+  .logistics .section-title .description { color: var(--paper); }
+  .logistics .section-title .city-cn { color: var(--gold); }
+
+  .logistics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logistics-item { border-top: 2px solid var(--paper); padding-top: 28px; }
+
+  .logistics-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--paper);
+  }
+
+  .logistics-item h4 em { font-style: italic; color: var(--gold); }
+
+  .logistics-item ul { margin-top: 16px; padding-left: 0; list-style: none; }
+  .logistics-item li {
+    font-size: 16px;
+    color: var(--paper);
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(247, 243, 234, 0.2);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    line-height: 1.5;
+  }
+  .logistics-item li span:last-child { color: var(--gold); font-style: italic; white-space: nowrap; flex-shrink: 0; }
+
+  /* ---------- COLOPHON ---------- */
+  .colophon {
+    padding: 100px 48px;
+    text-align: center;
+    background: var(--rice);
+  }
+
+  .colophon-mark {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    color: var(--vermilion);
+    letter-spacing: 0.5em;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .colophon p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ink);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .colophon .signoff {
+    margin-top: 40px;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  /* ---------- BOOKING CALLOUT ---------- */
+  .booking-callout {
+    background: var(--vermilion);
+    color: var(--rice);
+    padding: 6px 14px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  /* ---------- INK SPLATTER DECORATIVE ---------- */
+  .ink-mark {
+    position: absolute;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--vermilion);
+    opacity: 0.05;
+    font-size: 280px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 600;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    body { font-size: 17px; }
+    .cover { padding: 40px 24px; }
+    .cover-meta { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    section { padding: 60px 24px; }
+    .section-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+    .section-number { font-size: 140px; }
+    .day { grid-template-columns: 1fr; gap: 32px; padding-top: 48px; margin-bottom: 72px; }
+    .day-meta { position: static; }
+    .day-date { font-size: 48px; }
+    .day-weekday { font-size: 22px; }
+    .block { grid-template-columns: 70px 1fr; gap: 18px; }
+    .block-time { font-size: 20px; }
+    .block-title { font-size: 26px; }
+    .block-text { font-size: 16px; }
+    .scene-card { padding: 24px 20px; }
+    .scene-card-svg { height: 160px; }
+    .logistics-grid { grid-template-columns: 1fr; gap: 36px; }
+    .logistics { padding: 60px 24px; }
+    .interlude { padding: 70px 24px; }
+    .colophon { padding: 70px 24px; }
+    .colophon p { font-size: 20px; }
+  }
+
+  @media (max-width: 500px) {
+    .block { grid-template-columns: 1fr; gap: 8px; }
+    .block-time { border-top: none; padding-top: 0; font-size: 22px; font-weight: 600; }
+    .block-body { border-top: 1px solid var(--ink); padding-top: 12px; }
+  }
+
+  /* ---------- BLOCK PHOTOS (scroll-expand) ---------- */
+  .block-photo {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 22px;
+    transition: height 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease 0.2s;
+  }
+  .block-photo.revealed {
+    height: 200px;
+    opacity: 1;
+  }
+  .block-photo img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: contrast(1.02) saturate(0.92);
+  }
+  @media (max-width: 900px) {
+    .block-photo.revealed { height: 160px; }
+    .block-photo img { height: 160px; }
+  }
+
+  /* ---------- LINKED IMAGE HOVER ---------- */
+  .block-photo a, .scene-card a { display: block; line-height: 0; }
+  .block-photo a img, .scene-card a img {
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+  .block-photo a:hover img {
+    filter: contrast(1.04) saturate(0.98) brightness(1.1);
+    transform: scale(1.015);
+  }
+  .scene-card a:hover img {
+    filter: contrast(1.03) saturate(0.96) brightness(1.08);
+  }
+  /* ---------- BOOKING CALLOUT LINK ---------- */
+  .booking-callout a {
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: inherit;
+  }
+  .booking-callout a:hover { opacity: 0.82; }
+
+  /* ---------- LANGUAGE SWITCHER ---------- */
+  .lang-switch {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rice);
+    border: 1px solid var(--line);
+    padding: 7px 16px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .lang-switch a { color: var(--ink-soft); text-decoration: none; }
+  .lang-switch a.active { color: var(--vermilion); }
+  .lang-switch a:hover { color: var(--vermilion); }
+  .lang-switch .sep { color: var(--mist); }
+</style>
+</head>
+<body><div class="lang-switch"><a href="index.html">← 语言选择</a><span class="sep">·</span><a href="en.html">EN</a><span class="sep">·</span><a class="active" href="zh.html">中文</a></div>
+<!-- ============ COVER ============ -->
+<div class="cover">
+<div class="cover-mark">
+<div>家庭旅行手记<div style="margin-top:4px;">第一辑  ·  二〇二六年五月</div></div>
+<div class="seal">遊</div>
+</div>
+<div class="cover-title">
+<div class="cover-eyebrow">上有天堂——下有苏州与杭州</div>
+<h1>湖光<br/>山色，<em>园林</em><br/>之间。</h1>
+<div class="cover-subtitle">七日游历中国最富诗意的山水胜地——西湖晨雾轻拂，苏州园林精致如绣，千年运河在时光中缓缓流淌。</div>
+<div class="cover-chinese">上有天堂 · 下有蘇杭</div>
+</div>
+<div class="cover-meta">
+<div>出发日<strong>五月十九日</strong></div>
+<div>归程日<strong>五月二十七日</strong></div>
+<div>目的地<strong>杭州 · 苏州</strong></div>
+<div>同行人数<strong>三人</strong></div>
+</div>
+</div>
+<!-- ============ HANGZHOU ============ -->
+<section style="position: relative;">
+<div class="ink-mark" style="top: 60px; right: 60px;">杭</div>
+<div class="section-header">
+<div class="section-number">Ⅰ</div>
+<div class="section-title">
+<h2>杭州，<br/><em>三夜</em>西湖畔。</h2>
+<div class="city-cn">杭 州</div>
+<p class="description">Marco Polo called it the finest city in the world. Eight centuries on, Hangzhou still moves at the pace of a tea ceremony — willows trailing in West Lake, the scent of Longjing tea in the western hills, and the Grand Canal threading quietly past your hotel window.</p>
+</div>
+</div>
+<!-- West Lake illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Leifeng_Pagoda_and_Willow_Tree_across_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dawn — Leifeng Pagoda and weeping willows" class="scene-card-svg" src="images/west-lake.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">西湖晨曦——柳丝拂水，南岸宝塔矗立。</div>
+</div>
+<!-- Day 1 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第一天 · 抵达</div>
+<div class="day-date"><em>20</em> 五月</div>
+<div class="day-weekday">星期三</div>
+<div class="day-summary">轻松落地。将行李放置于运河边的酒店，在门前的古老仓储街区漫步，让杭州徐徐向你展开。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">11:10</div>
+<div class="block-body">
+<div class="block-title">抵达杭州萧山国际机场</div>
+<div class="block-title-cn">杭州萧山国际机场</div>
+<div class="block-text">抵达杭州萧山国际机场4号航站楼（国际到达）。新加坡护照免签入境。乘滴滴前往龙禧大运河酒店约需五十分钟；携带行李时优于地铁。</div>
+<div class="tip">出发前请配置支付宝并安装VPN。现金几乎无处可用，无VPN则无法使用谷歌及WhatsApp。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">办理入住 · 午餐</div>
+<div class="block-text">龙禧大运河酒店坐落于大运河畔——这条联合国教科文组织认定的世界文化遗产水道自北京蜿蜒流至杭州。安顿后，在附近寻觅午餐。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">15:30</div>
+<div class="block-body">
+<div class="block-title">桥西历史街区</div>
+<div class="block-title-cn">桥西历史街区</div>
+<div class="block-text">就在酒店旁——明清时期的仓库已被改建为运河西岸的商店、画廊与茶馆。<strong>中国刀剪剑博物馆</strong>、<strong>伞博物馆</strong>与<strong>扇博物馆</strong>皆聚于此，均免费开放，出人意料地令人着迷。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">西湖附近晚餐</div>
+<div class="block-title-cn">武林夜市</div>
+<div class="block-text">乘滴滴前往武林或西湖附近的湖滨路。初尝杭帮菜——也许是<strong>东坡肉</strong>或<strong>西湖醋鱼</strong>——并在夜色中第一次望见西湖。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.083756_View_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake at dusk, Hangzhou" src="images/west-lake-day.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第二天 · 西湖</div>
+<div class="day-date"><em>21</em> 五月</div>
+<div class="day-weekday">星期四</div>
+<div class="day-summary">环游西湖全程——白堤苏堤、宝塔林立，以及那个被印在一元人民币背面的小岛。赶在人潮之前出发，以灯光倒映水面作结。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:00</div>
+<div class="block-body">
+<div class="block-title">白堤初晓</div>
+<div class="block-title-cn">白堤 · 断桥</div>
+<div class="block-text">从<strong>断桥</strong>出发——白堤的起点，以唐代诗人白居易命名。向西穿行孤山岛，经过岳王庙，再踏上苏堤。六公里的柳岸、荷叶与古石桥。晨雾缭绕，正是你此行最值得留影之处。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Duan_Qiao.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Broken Bridge and Bai Causeway, West Lake" src="images/bai-causeway.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">湖畔午餐</div>
+<div class="block-text">推荐湖畔的<strong>绿茶餐厅（绿茶）</strong>——价格实惠，本地人云集，尽是杭帮风味。或选择<strong>外婆家</strong>，菜色相近但环境略显精致。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">13:30</div>
+<div class="block-body">
+<div class="block-title">三潭印月</div>
+<div class="block-title-cn">三潭印月</div>
+<div class="block-text">乘船前往湖心小岛——即印在每张一元人民币背面的那座岛屿。三座石塔从水中升起；每逢中秋，塔内点燃蜡烛，倒影在水面上不断叠映。</div>
+<div class="tip">船票约70元。踏上小岛，西湖顿显辽阔无垠。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Three_Pools_Mirroring_the_Moon-pool.JPG" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Three Pools Mirroring the Moon, West Lake" src="images/three-pools.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">16:00</div>
+<div class="block-body">
+<div class="block-title">雷峰塔暮色</div>
+<div class="block-title-cn">雷峰塔</div>
+<div class="block-text">登上湖畔南岸的宝塔俯瞰全景——西湖、城市，以及远处的吴越山脉。此塔于2002年在古址上重建，内设电梯，是奇迹还是亵渎，各有所见。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20100719_Leifeng_Pagoda_and_West_Lake.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Leifeng Pagoda and West Lake" src="images/leifeng-pagoda.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">河坊街</div>
+<div class="block-title-cn">河坊街</div>
+<div class="block-text">从雷峰塔步行片刻即至——杭州修缮一新的古老商业街。小吃摊、传统药铺，以及臭豆腐与桂花香交织的气息。在此用晚餐十分便利。</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/hangzhou/impression-west-lake-10758551/" rel="noopener noreferrer" target="_blank">可选：印象西湖演出——请提前订票</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20191108_160504_Richtone(HDR).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Hefang Old Street, Hangzhou" src="images/hefang-street.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Tea fields illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_district_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing tea district, Hangzhou — terraced green plantations" class="scene-card-svg" src="images/longjing-tea.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">梅家坞——龙井茶梯田，一叶一叶手工采摘。</div>
+</div>
+<!-- Day 3 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第三天 · 茶园与古寺</div>
+<div class="day-date"><em>22</em> 五月</div>
+<div class="day-weekday">星期五</div>
+<div class="day-summary">西行入山——在中国最古老的庙宇之一燃香祈福，再踏入刚完成春采的翠绿茶园。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:30</div>
+<div class="block-body">
+<div class="block-title">灵隐寺</div>
+<div class="block-title-cn">灵隐寺</div>
+<div class="block-text">创建于公元328年——几乎比你曾踏足的任何建筑都要古老。坐落于城西山林之中，身着袈裟的僧侣、千炷香烟袅袅，以及<strong>飞来峰</strong>上历经千年的佛教摩崖造像。</div>
+<div class="tip">周五上午游人远少于周末。请提前一天通过灵隐寺微信公众号预约。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20231124_Lingyin_Temple_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingyin Temple, Hangzhou" src="images/lingyin-temple.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">12:00</div>
+<div class="block-body">
+<div class="block-title">龙井村午餐</div>
+<div class="block-title-cn">龙井村</div>
+<div class="block-text">距灵隐寺仅十分钟车程。在茶农家中用餐——一顿简朴的<strong>茶香鸡</strong>、河虾与时令素菜，全程以新鲜龙井茶相伴。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Longjing_tea_village_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Longjing village, Hangzhou" src="images/longjing-village.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">梅家坞茶园</div>
+<div class="block-title-cn">梅家坞茶园</div>
+<div class="block-text">漫步整洁翠绿的<strong>龙井（龙井）茶</strong>梯田——中国最著名的绿茶。五月正值春茶采收后不久，茶叶品质最为上乘。参观茶馆，观看手工炒制，带一罐回家——其与超市绿茶的差别，如同精品咖啡与速溶的天壤之别。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">16:30</div>
+<div class="block-body">
+<div class="block-title">苏堤夕照</div>
+<div class="block-title-cn">苏堤春晓</div>
+<div class="block-text">九百年前由诗人兼官员苏东坡修筑而成。在起点之处结束这一天——却换到对岸，静观湖面染成粉红与金黄。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20230629_Xi_Hu.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Su Causeway, West Lake at dusk" src="images/su-causeway.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">20:00</div>
+<div class="block-body">
+<div class="block-title">可选：大运河夜游</div>
+<div class="block-text">从酒店附近的武林门出发。运河两岸灯火辉映，船行缓缓，水边纳凉的家庭所做之事，与他们的祖辈在此地无异。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:2014.11.21.190358_Nightview_Xihu_Hangzhou.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="West Lake and Hangzhou at night" src="images/canal-night.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Day 4 morning -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第四天 · 离城早晨</div>
+<div class="day-date"><em>23</em> 五月</div>
+<div class="day-weekday">星期六</div>
+<div class="day-summary">最后一顿早餐，沿运河最后一次散步，然后登上列车。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">07:30</div>
+<div class="block-body">
+<div class="block-title">早餐——小笼包</div>
+<div class="block-text">在酒店附近寻一家本地<strong>小笼包</strong>店。正宗的汤包，是江南人与生俱来的口福。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">09:30</div>
+<div class="block-body">
+<div class="block-title">退房 · 前往杭州东站</div>
+<div class="block-text">乘滴滴前往杭州东站，约需三十分钟。目标10:00到站，赶乘10:30的列车。</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ INTERLUDE TRAIN ============ -->
+<div class="interlude">
+<div class="train-icon">— · —</div>
+<h3>乘<em>高铁</em><br/>前往东方水城。</h3>
+<div class="route">杭 州 ━━━━ 蘇 州</div>
+<div class="details">G-class · 1h 30m · ~CNY 115</div>
+</div>
+<!-- ============ SUZHOU ============ -->
+<section style="position: relative;">
+<div class="ink-mark" style="top: 60px; right: 60px;">蘇</div>
+<div class="section-header">
+<div class="section-number">Ⅱ</div>
+<div class="section-title">
+<h2>苏州，<br/><em>园林</em>与运河之间。</h2>
+<div class="city-cn">蘇 州</div>
+<p class="description">For two and a half thousand years, Suzhou has been the city of poets, silk merchants and exiled scholars who built private gardens to imitate the universe. Cendre Hotel sits in the heart of Gusu — the old city — within walking distance of cobbled canals and the most beautiful gardens in the world.</p>
+</div>
+</div>
+<!-- Pingjiang canal illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:Riverside_of_Pingjiang_Road%2C_Gusu%2C_Suzhou%2C_Jiangsu%2C_China%2C_215000.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Pingjiang Road, Suzhou — canal-side houses and stone bridges" class="scene-card-svg" src="images/pingjiang-road.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">平江路暮色——灯笼倒映在这条流淌了七百年的运河之上。</div>
+</div>
+<!-- Day 1 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第一天 · 抵达</div>
+<div class="day-date"><em>23</em> 五月</div>
+<div class="day-weekday">星期六</div>
+<div class="day-summary">下车，放下行李，踏入一个有着七百年历史的街区。平江路就在你的门前。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">12:30</div>
+<div class="block-body">
+<div class="block-title">颂德酒店</div>
+<div class="block-text">从苏州站打车约十分钟。颂德酒店位于<strong>河沿街99号</strong>——姑苏区的心脏地带，历史古城中心。放下行李，在附近用午餐。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">平江路</div>
+<div class="block-title-cn">平江路</div>
+<div class="block-text">一条七百年来几乎未变的运河小街。石桥、格子窗，水声拍打着至今仍有人居住的屋基。慢慢走。尝一尝招牌菜<strong>松鼠桂鱼（松鼠桂鱼）</strong>，或坐进一家茶馆，品一杯<strong>碧螺春</strong>——苏州的著名绿茶。</div>
+<div class="tip">乘小木船沿运河而下（约80元）是在中国最惬意的事情之一。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">18:00</div>
+<div class="block-body">
+<div class="block-title">评弹</div>
+<div class="block-title-cn">评弹</div>
+<div class="block-text">苏州传统说唱艺术——一两位演员，一把琵琶，一把三弦，用吴侬软语吟唱着历经数百年的弹词。颂德酒店前台可为您指引附近的演出场所。一小时，将改变你聆听这座城市的方式。</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第二天 · 虎丘与山塘</div>
+<div class="day-date"><em>24</em> 五月</div>
+<div class="day-weekday">星期日</div>
+<div class="day-summary">倾斜的宝塔，沿城内最古老水道乘船而归，以及夜晚灯笼点亮的古典园林。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">09:00</div>
+<div class="block-body">
+<div class="block-title">虎丘</div>
+<div class="block-title-cn">虎丘</div>
+<div class="block-text">古城外的一座小山——苏州建城者阖闾的陵寝，相传其与三千把宝剑同眠于山脚池塘之下。山顶矗立：<strong>云岩寺塔</strong>，历经千年，微微北倾——比比萨斜塔更为古老，以砖石砌就。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Tigerhill.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Tiger Hill with Yunyan Pagoda, Suzhou" src="images/tiger-hill.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">乘船前往山塘街</div>
+<div class="block-title-cn">山塘街</div>
+<div class="block-text">从虎丘乘船沿<strong>山塘街</strong>水路返回——这条始建于1200年前的水道，是诗人白居易任职苏州时主持开凿的。比平江路历史更久，也更有烟火气。沿途在一家面馆用午餐；<strong>苏式汤面</strong>是一种宁静的惊喜——清汤、手拉面条，几片焖肉或河鱼。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:1_shantang_street_canal_2023.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Shantang Street canal, Suzhou" src="images/shantang-street.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:00</div>
+<div class="block-body">
+<div class="block-title">留园</div>
+<div class="block-title-cn">留园</div>
+<div class="block-text">中国四大名园之一，列入联合国教科文组织世界遗产名录。规模较拙政园小，却更显精巧。以假山叠石、书法碑刻著称，尤其是那块高达6.5米的<strong>太湖石</strong>——由水流历经岁月塑造而成的石灰岩，被视为古典园林的精魂所在。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20240203_Lingering_Garden_01.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lingering Garden, Suzhou" src="images/lingering-garden.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">松鹤楼晚餐</div>
+<div class="block-title-cn">松鹤楼</div>
+<div class="block-text">观前街上一家有着两百五十年历史的餐馆——松鼠桂鱼的传奇创始之地。此生在此点一次，不虚此行。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">20:30</div>
+<div class="block-body">
+<div class="block-title">网师园 · 夜游</div>
+<div class="block-title-cn">网师园 · 夜游</div>
+<div class="block-text">最小的名园，夜晚开放，红灯笼点亮庭院，各处亭台分演<strong>昆曲</strong>与<strong>评弹</strong>——随步移景，从一处舞台走向下一处。真正令人难以忘怀。</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/master-of-nets-garden-10558597/" rel="noopener noreferrer" target="_blank">请提前订票——携程，提前2至3天</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:66234-Suzhou_(49176983826).jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Master of the Nets Garden, Suzhou" src="images/master-of-nets.jpg"/></a></div></div>
+</div>
+</div>
+</div>
+<!-- Garden illustration -->
+<div class="scene-card" style="max-width: 1400px; margin: 0 auto 60px;">
+<a href="https://commons.wikimedia.org/wiki/File:2015-09-24-121330_-_Suzhou%2C_Garten_des_bescheidenen_Beamten.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Humble Administrator's Garden, Suzhou — pavilions, pond, and classical landscape" class="scene-card-svg" src="images/suzhou-garden.jpg" style="object-fit:cover;filter:contrast(1.02) saturate(0.92);"/></a>
+<div class="scene-card-caption">古典园林——翠竹、月洞门，以及池中的太湖石。</div>
+</div>
+<!-- Day 3 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第三天 · 名园之旅</div>
+<div class="day-date"><em>25</em> 五月</div>
+<div class="day-weekday">星期一</div>
+<div class="day-summary">周末人潮散去，城市回归本色。游览名园，探访贝聿铭设计的博物馆，穿行奇石迷宫——最后以一场漫长而从容的苏州宴席为旅程画上句点。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">08:30</div>
+<div class="block-body">
+<div class="block-title">拙政园</div>
+<div class="block-title-cn">拙政园</div>
+<div class="block-text">你专程来苏州就为了它。中国最大的古典园林——1509年由一位致仕官员建造，据说他以「拙朴」的方式主持了世上最奢华的退休工程。五百年来，无数文人墨客踏过这条小径。开园时便守在门口。</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/humble-administrator-s-garden-82473/" rel="noopener noreferrer" target="_blank">务必提前订票——携程，提前3至7天。每日限额。</a></div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">苏州博物馆</div>
+<div class="block-title-cn">苏州博物馆</div>
+<div class="block-text">由苏州出生的建筑师<strong>贝聿铭</strong>设计——他人生中最后一项重大委托，于2006年竣工。白墙黛瓦，石庭园令人忍不住从各个角度拍照留念。馆藏精而不多：宋代书法、明代瓷器、佛教文物。</div>
+<div class="booking-callout"><a href="https://www.trip.com/travel-guide/attraction/suzhou/suzhou-museum-82121/" rel="noopener noreferrer" target="_blank">免费入场，但须预约——提前7天预订</a></div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:Suzhou_Museum_-_new_buildings.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Suzhou Museum designed by I.M. Pei" src="images/suzhou-museum.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">14:30</div>
+<div class="block-body">
+<div class="block-title">狮子林</div>
+<div class="block-title-cn">狮子林</div>
+<div class="block-text">距博物馆步行五分钟。同列联合国教科文组织世界遗产，却别具一格——形如蹲伏之狮的<strong>假山迷宫</strong>，其间洞穿曲径，可通行其中。建于1342年，由佛教僧侣修筑。孩子们喜爱它，大人亦然。</div>
+<div class="block-photo"><a href="https://commons.wikimedia.org/wiki/File:20090905_Suzhou_Lion_Grove_Garden_4502.jpg" rel="noopener noreferrer" target="_blank" title="View on Wikimedia Commons"><img alt="Lion Grove Garden rockeries, Suzhou" src="images/lion-grove.jpg"/></a></div></div>
+</div>
+<div class="block">
+<div class="block-time">19:00</div>
+<div class="block-body">
+<div class="block-title">吴门人家——苏州宴席</div>
+<div class="block-title-cn">吴门人家</div>
+<div class="block-text">平江路附近庭院式餐厅里的传统苏州宴席。<strong>松鼠桂鱼</strong>、<strong>苏式红烧肉</strong>、<strong>桂花糯米藕</strong>、<strong>碧螺春虾仁</strong>。节奏舒缓，仪式感十足，正是结束旅程最恰当的方式。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">21:00</div>
+<div class="block-body">
+<div class="block-title">最后一次沿运河漫步</div>
+<div class="block-text">白天的游客已散去的平江路。灯笼倒映静水，居民坐在台阶上纳凉，某处开着的窗里传来琵琶声。</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 4 -->
+<div class="day">
+<div class="day-meta">
+<div class="day-tag">第四天 · 踏上归途</div>
+<div class="day-date"><em>26</em> 五月</div>
+<div class="day-weekday">星期二</div>
+<div class="day-summary">乘早班列车，抵达机场，踏上漫长的归途。带上一罐龙井相伴旅程。</div>
+</div>
+<div class="day-content">
+<div class="block">
+<div class="block-time">09:00</div>
+<div class="block-body">
+<div class="block-title">退房 · 前往苏州站</div>
+<div class="block-text">打车前往苏州站，乘10:00高铁至杭州东站。预留了充裕的交通缓冲时间。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">11:30</div>
+<div class="block-body">
+<div class="block-title">杭州东站——前往萧山机场</div>
+<div class="block-text">下车直奔杭州萧山机场。乘地铁1号线转7号线，或打滴滴（更快，约100元）。13:00到达机场——在国泰航空15:55起飞的香港航班前留有充裕的缓冲时间，之后经CX715转机回新加坡。</div>
+</div>
+</div>
+<div class="block">
+<div class="block-time">00:45</div>
+<div class="block-body">
+<div class="block-title">新加坡</div>
+<div class="block-text">5月27日凌晨抵达樟宜机场T4航站楼。一周的烟雨、园林与清茶，就此画上句点。</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ LOGISTICS ============ -->
+<div class="logistics">
+<div class="section-header">
+<div class="section-number">Ⅲ</div>
+<div class="section-title">
+<h2>实用<em>信息</em>。</h2>
+<div class="city-cn">準 備</div>
+<p class="description">A short guide to the small things — bookings, apps, and the everyday logistics that make travel in China surprisingly smooth once you have them sorted.</p>
+</div>
+</div>
+<div class="logistics-grid">
+<div class="logistics-item">
+<h4>出发前<em>准备</em></h4>
+<ul>
+<li><span>支付宝——绑定境外银行卡</span><span>登机前</span></li>
+<li><span>VPN——用于谷歌、WhatsApp、Instagram</span><span>登机前</span></li>
+<li><span>苹果地图在中国可用</span><span>——</span></li>
+<li><span>滴滴打车应用</span><span>——</span></li>
+<li><span>新加坡护照：免签30天</span><span>——</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>在<em>携程</em>预订的列车</h4>
+<ul>
+<li><span>杭州东→苏州（5月23日）</span><span>5月8日开售</span></li>
+<li><span>苏州→杭州东（5月26日）</span><span>5月11日开售</span></li>
+<li><span>三人同次交易一并购票</span><span>——</span></li>
+<li><span>选择高铁二等座</span><span>约115元</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>苏州景点——<em>提前订票</em></h4>
+<ul>
+<li><span>拙政园（5月25日）</span><span>提前3至7天</span></li>
+<li><span>苏州博物馆（5月25日）</span><span>提前7天</span></li>
+<li><span>网师园夜游（5月24日）</span><span>提前2至3天</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>杭州<em>景点门票</em></h4>
+<ul>
+<li><span>灵隐寺预约</span><span>前一天</span></li>
+<li><span>印象西湖演出</span><span>提前2至3天</span></li>
+<li><span>雷峰塔</span><span>当天购票</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>天气与<em>行装</em></h4>
+<ul>
+<li><span>五月下旬：22–28°C，偶有降雨</span><span>——</span></li>
+<li><span>备薄外套，携便携雨伞</span><span>——</span></li>
+<li><span>舒适步行鞋——必备</span><span>——</span></li>
+<li><span>平江路石板路雨天易滑</span><span>——</span></li>
+</ul>
+</div>
+<div class="logistics-item">
+<h4>几点<em>注意事项</em></h4>
+<ul>
+<li><span>5月23日（周六）——平江路人潮汹涌</span><span>傍晚前往</span></li>
+<li><span>5月24日（周日）——虎丘人较多</span><span>早早前往</span></li>
+<li><span>5月25日（周一）——游园最佳时机</span><span>周末游客已散</span></li>
+<li><span>乘坐所有列车须携带实体护照</span><span>——</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- ============ COLOPHON ============ -->
+<div class="colophon">
+<div class="colophon-mark">遊</div>
+<p>「上有天堂，下有苏杭。」<br/>——中国谚语，源于十三世纪</p>
+<div class="signoff">——以爱编撰 · 二〇二六年五月——</div>
+</div>
+<script>
+(function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.block-photo').forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+</script></body>
+</html>

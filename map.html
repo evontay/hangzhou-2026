@@ -875,7 +875,8 @@ const leafletMarkers = {};
 allPlaces.forEach((p, i) => {
   const band = p.type === 'hotel' ? 'gold' : p.city;
   const cnClass = p.type === 'hotel' ? 'gold' : (p.city === 'suzhou' ? 'red' : '');
-  const amapUrl = `https://uri.amap.com/marker?position=${p.lng},${p.lat}&name=${encodeURIComponent(p.cn)}&src=itinerary&callnative=1`;
+  const cityLabel = p.city === 'hangzhou' ? '杭州' : '苏州';
+  const amapUrl = `https://uri.amap.com/search?keyword=${encodeURIComponent(p.cn)}&city=${encodeURIComponent(cityLabel)}&callnative=1`;
 
   const popup = `
     <div>
@@ -912,9 +913,14 @@ function flyTo(lat, lng, zoom) {
 document.querySelectorAll('.place-card').forEach(function(card) {
   var btn = card.querySelector('.amap-btn');
   if (!btn) return;
+  var cnEl = card.querySelector('.place-cn');
+  var cnName = cnEl ? cnEl.textContent.trim() : '';
+  var panel = card.closest('.places-panel');
+  var city = (panel && panel.id === 'panel-suzhou') ? '苏州' : '杭州';
+  var searchUrl = 'https://uri.amap.com/search?keyword=' + encodeURIComponent(cnName) + '&city=' + encodeURIComponent(city) + '&callnative=1';
   var link = document.createElement('a');
   link.className = 'amap-link';
-  link.href = btn.getAttribute('href');
+  link.href = searchUrl;
   link.target = '_blank';
   link.textContent = '在高德地图中打开 →';
   link.addEventListener('click', function(e) { e.stopPropagation(); });

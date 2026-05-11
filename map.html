@@ -911,9 +911,10 @@ const map = L.map('leaflet-map', {
   zoomControl: true
 });
 
-L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://stamen.com">Stamen</a> © <a href="https://openstreetmap.org">OSM</a>',
-  maxZoom: 18
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 20
 }).addTo(map);
 
 // ─── MARKERS ────────────────────────────────────────────────────────────

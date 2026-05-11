@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hangzhou & Suzhou — Interactive Map</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --paper:     #f7f3ea;
+  --rice:      #fbf8f0;
+  --ink:       #1a1a1a;
+  --ink-soft:  #3d3d3d;
+  --mist:      #b8b4a7;
+  --mist-light:#e8e5dd;
+  --jade:      #3a5a4d;
+  --jade-deep: #1f3528;
+  --jade-bg:   #e8f0ec;
+  --vermilion: #9c2a2a;
+  --verm-bg:   #f5e8e8;
+  --gold:      #a07c3a;
+  --gold-bg:   #f5eed9;
+  --amap-blue: #1677ff;
+  --amap-bg:   #e8f1ff;
+  --line:      #1a1a1a;
+}
+
+/* ─── LANG SWITCH ─── */
+.lang-switch {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--rice);
+  border: 1px solid var(--line);
+  padding: 7px 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  font-family: 'Source Serif 4', Georgia, serif;
+}
+.lang-switch a { color: var(--ink-soft); text-decoration: none; }
+.lang-switch a.active { color: var(--vermilion); }
+.lang-switch a:hover { color: var(--vermilion); }
+.lang-switch .sep { color: var(--mist); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.page-header {
+  padding: 24px 32px 20px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--rice);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.header-left h1 em { font-style: italic; color: var(--jade-deep); }
+
+.header-sub {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* China notice badge */
+.china-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--amap-bg);
+  border: 1px solid var(--amap-blue);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 360px;
+}
+
+.china-notice-flag { font-size: 20px; flex-shrink: 0; }
+
+.china-notice-text strong {
+  display: block;
+  color: var(--amap-blue);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* ─── MAP AREA ─── */
+.map-area {
+  position: relative;
+  height: 55vh;
+  min-height: 320px;
+  border-bottom: 1px solid var(--mist);
+}
+
+#leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Map overlay notice */
+.map-overlay-notice {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,26,26,0.82);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* City tabs */
+.city-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--mist);
+  background: var(--rice);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.city-tab {
+  flex: 1;
+  padding: 14px 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--mist);
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.city-tab .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.city-tab:hover { color: var(--ink); background: var(--paper); }
+
+.city-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  background: var(--paper);
+}
+
+.city-tab.hangzhou-tab.active { border-bottom-color: var(--jade); }
+.city-tab.suzhou-tab.active   { border-bottom-color: var(--vermilion); }
+
+.dot.jade     { background: var(--jade); }
+.dot.vermilion { background: var(--vermilion); }
+
+/* ─── PLACES PANEL ─── */
+.places-panel { display: none; }
+.places-panel.active { display: block; }
+
+/* Day group */
+.day-group {
+  border-bottom: 1px solid var(--mist-light);
+}
+
+.day-group-header {
+  padding: 14px 32px 10px;
+  background: var(--rice);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px dashed var(--mist-light);
+  position: sticky;
+  top: 53px;
+  z-index: 5;
+}
+
+.day-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--mist);
+}
+
+.day-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.day-theme {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* Place card */
+.place-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--mist-light);
+  align-items: center;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.place-card:hover { background: rgba(0,0,0,0.02); }
+
+.place-card.hotel-card { background: var(--gold-bg); }
+.place-card.hotel-card:hover { background: #ede4c8; }
+
+.place-left { display: flex; align-items: flex-start; gap: 14px; }
+
+.place-time-col {
+  min-width: 52px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.place-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--vermilion);
+  line-height: 1;
+}
+
+.place-time.jade  { color: var(--jade); }
+.place-time.gold  { color: var(--gold); }
+
+.place-divider {
+  width: 1px;
+  min-height: 40px;
+  background: var(--mist-light);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.place-info { flex: 1; min-width: 0; }
+
+.place-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.place-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--jade);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.place-cn.red { color: var(--vermilion); }
+.place-cn.gold { color: var(--gold); }
+
+.place-note {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ─── AMAP BUTTON ─── */
+.amap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--amap-blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+  font-family: 'Source Serif 4', Georgia, serif;
+  flex-shrink: 0;
+}
+
+.amap-btn:hover {
+  background: #0958d9;
+  transform: translateY(-1px);
+}
+
+.amap-btn:active { transform: translateY(0); }
+
+.amap-btn svg {
+  width: 14px; height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.amap-btn-label { display: flex; flex-direction: column; line-height: 1.2; }
+.amap-btn-cn { font-family: 'Noto Serif SC', serif; font-size: 11px; opacity: 0.85; font-weight: 400; }
+
+/* ─── FOOTER NOTE ─── */
+.map-footer {
+  padding: 24px 32px;
+  border-top: 1px solid var(--mist);
+  background: var(--rice);
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.footer-col { flex: 1; min-width: 200px; }
+.footer-col strong { display: block; font-weight: 600; color: var(--ink); margin-bottom: 4px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; }
+
+/* ─── LEAFLET OVERRIDES ─── */
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+  border: 1px solid var(--ink) !important;
+  box-shadow: 3px 3px 0 rgba(26,26,26,0.12) !important;
+  background: var(--rice) !important;
+  padding: 0 !important;
+  font-family: 'Source Serif 4', Georgia, serif !important;
+}
+.leaflet-popup-tip { background: var(--rice) !important; }
+.leaflet-popup-content { margin: 0 !important; width: auto !important; }
+.leaflet-control-zoom a {
+  border-radius: 0 !important;
+  border: 1px solid var(--mist) !important;
+  background: var(--rice) !important;
+  color: var(--ink) !important;
+}
+.leaflet-control-zoom a:hover { background: var(--paper) !important; }
+.leaflet-control-attribution { font-size: 10px !important; }
+
+.popup-band { height: 3px; }
+.popup-band.jade       { background: var(--jade); }
+.popup-band.vermilion  { background: var(--vermilion); }
+.popup-band.gold       { background: var(--gold); }
+.popup-body { padding: 12px 14px 14px; min-width: 200px; max-width: 260px; }
+.popup-day { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); margin-bottom: 4px; }
+.popup-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.popup-cn-sm { font-family: 'Noto Serif SC', serif; font-size: 12px; color: var(--jade); margin-bottom: 8px; }
+.popup-cn-sm.red { color: var(--vermilion); }
+.popup-cn-sm.gold { color: var(--gold); }
+.popup-note-sm { font-size: 12px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 10px; }
+.popup-amap {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: var(--amap-blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .page-header { padding: 16px 20px 14px; }
+  .china-notice { max-width: 100%; }
+  .map-area { height: 40vh; }
+  .day-group-header { padding: 12px 20px 8px; }
+  .place-card { padding: 14px 20px; gap: 10px; }
+  .place-name { font-size: 18px; }
+  .map-footer { padding: 20px; gap: 20px; }
+  .place-time { font-size: 16px; }
+  .amap-btn { padding: 7px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="lang-switch"><a href="index.html">← Language</a><span class="sep">·</span><a href="en.html">EN</a><span class="sep">·</span><a href="zh.html">中文</a><span class="sep">·</span><a class="active" href="map.html">Map</a></div>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+<header class="page-header">
+  <div class="header-left">
+    <h1>Hangzhou <em>&</em> Suzhou</h1>
+    <div class="header-sub">May 2026 &nbsp;·&nbsp; 20 attractions &nbsp;·&nbsp; 7 days</div>
+  </div>
+  <div class="china-notice">
+    <div class="china-notice-flag">🇨🇳</div>
+    <div class="china-notice-text">
+      <strong>In China? Tap 高德地图</strong>
+      Each attraction has an "Open in 高德地图" button — works without VPN directly in the Amap app or browser.
+    </div>
+  </div>
+</header>
+
+<!-- ═══ LEAFLET MAP ════════════════════════════════════════════════════════ -->
+<div class="map-area">
+  <div id="leaflet-map"></div>
+  <div class="map-overlay-notice">Visual reference — may not load in mainland China without VPN</div>
+</div>
+
+<!-- ═══ CITY TABS ═════════════════════════════════════════════════════════ -->
+<div class="city-tabs">
+  <button class="city-tab hangzhou-tab active" onclick="showCity('hangzhou', this)">
+    <span class="dot jade"></span>
+    杭州 &nbsp;Hangzhou
+  </button>
+  <button class="city-tab suzhou-tab" onclick="showCity('suzhou', this)">
+    <span class="dot vermilion"></span>
+    苏州 &nbsp;Suzhou
+  </button>
+</div>
+
+<!-- ═══ HANGZHOU PANEL ════════════════════════════════════════════════════ -->
+<div class="places-panel active" id="panel-hangzhou">
+
+  <!-- Hotel -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Base</span>
+      <span class="day-date">May 20 – 23</span>
+      <span class="day-theme">3 nights, Grand Canal</span>
+    </div>
+    <div class="place-card hotel-card" onclick="flyTo(30.315939, 120.139754, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time gold">宿</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Cheery Dragon Canal Hotel</div>
+          <div class="place-cn gold">杭州大运河非遗文化酒店</div>
+          <div class="place-note">Check-in 14:00. Your Hangzhou base — Grand Canal on your doorstep, Qiaoxi Historic Block steps away.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.139754,30.315939&name=杭州大运河非遗文化酒店&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 1</span>
+      <span class="day-date">Wed, 20 May</span>
+      <span class="day-theme">Arrival · Grand Canal neighbourhood</span>
+    </div>
+    <div class="place-card" onclick="flyTo(30.318718, 120.13732, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">15:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Qiaoxi Historic Block</div>
+          <div class="place-cn">桥西历史街区</div>
+          <div class="place-note">Ming & Qing warehouses converted to galleries. Knife, Umbrella & Fan Museums — all free.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.13732,30.318718&name=桥西历史街区&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 2</span>
+      <span class="day-date">Thu, 21 May</span>
+      <span class="day-theme">West Lake full circuit</span>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.260939, 120.15097, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">08:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Broken Bridge & Bai Causeway</div>
+          <div class="place-cn">断桥 · 白堤</div>
+          <div class="place-note">Start of the West Lake circuit. Go at dawn — best light, fewest crowds. Walk west to Su Causeway.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.15097,30.260939&name=断桥&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.238836, 120.145314, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">13:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Three Pools Mirroring the Moon</div>
+          <div class="place-cn">三潭印月</div>
+          <div class="place-note">Take the boat from the harbour — ¥70. The island on the 1-yuan note.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.145314,30.238836&name=三潭印月&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.2315677, 120.149695, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">16:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Leifeng Pagoda</div>
+          <div class="place-cn">雷峰塔</div>
+          <div class="place-note">Climb for panoramic views at sunset. Open 8am–8pm. ¥40 entry.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.149695,30.2315677&name=雷峰塔&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.24012, 120.17249, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">19:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Hefang Street</div>
+          <div class="place-cn">河坊街</div>
+          <div class="place-note">Hangzhou's restored old commercial street. Snacks, traditional medicine, osmanthus treats.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.17249,30.24012&name=河坊街&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 3</span>
+      <span class="day-date">Fri, 22 May</span>
+      <span class="day-theme">Tea & Temple</span>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.240831, 120.101481, 14)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">08:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Lingyin Temple</div>
+          <div class="place-cn">灵隐寺</div>
+          <div class="place-note">Founded 328 AD. Feilai Feng Buddhist cliff carvings. Reserve via WeChat day before. ¥75.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.101481,30.240831&name=灵隐寺&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.21887, 120.10552, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">12:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Longjing Village</div>
+          <div class="place-cn">龙井村</div>
+          <div class="place-note">Lunch at a tea farmer's home — tea-smoked chicken, river shrimp, fresh Longjing throughout.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.10552,30.21887&name=龙井村&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(30.244103, 120.115148, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time jade">14:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Meijiawu Tea Plantation</div>
+          <div class="place-cn">梅家坞茶园</div>
+          <div class="place-note">Dragon Well tea terraces. May = just after spring harvest. Visit a tea house, buy a tin.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.115148,30.244103&name=梅家坞&src=hangzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /panel-hangzhou -->
+
+<!-- ═══ SUZHOU PANEL ═══════════════════════════════════════════════════════ -->
+<div class="places-panel" id="panel-suzhou">
+
+  <!-- Hotel -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Base</span>
+      <span class="day-date">May 23 – 26</span>
+      <span class="day-theme">3 nights, Gusu District</span>
+    </div>
+    <div class="place-card hotel-card" onclick="flyTo(31.321968, 120.581085, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time gold">宿</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Cendre Hotel</div>
+          <div class="place-cn gold">欣得酒店（苏州虎丘店）</div>
+          <div class="place-note">99 Heyuan Road (和园路), Gusu District. 10 min taxi from Suzhou Station. Check-in 12:00.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.581085,31.321968&name=欣得酒店苏州虎丘店&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 4</span>
+      <span class="day-date">Sat, 23 May</span>
+      <span class="day-theme">Arrival · Pingjiang Road</span>
+    </div>
+    <div class="place-card" onclick="flyTo(31.309589, 120.634803, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">14:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Pingjiang Road</div>
+          <div class="place-cn red">平江路</div>
+          <div class="place-note">700-year-old canal street. Boat ride ~¥80. Pingtan teahouse performance in the evening.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.634803,31.309589&name=平江路&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 5</span>
+      <span class="day-date">Sun, 24 May</span>
+      <span class="day-theme">Tiger Hill · Shantang · Gardens · Night tour</span>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.335795, 120.580404, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">09:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Tiger Hill</div>
+          <div class="place-cn red">虎丘</div>
+          <div class="place-note">Go early — busy on Sundays. Yunyan Pagoda, 1,000 years old, leaning north. ¥80 entry.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.580404,31.335795&name=虎丘&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.31622, 120.6035, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">11:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Shantang Street</div>
+          <div class="place-cn red">山塘街</div>
+          <div class="place-note">Take the canal boat from Tiger Hill. Lunch at a noodle shop — try Suzhou-style 苏式汤面.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.6035,31.31622&name=山塘街&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.3157066, 120.5925704, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">14:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Lingering Garden</div>
+          <div class="place-cn red">留园</div>
+          <div class="place-note">UNESCO. Famous rockeries and the 6.5m Taihu stone. ¥55 entry.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.5925704,31.3157066&name=留园&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.310672, 120.625653, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">19:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Songhelou Restaurant</div>
+          <div class="place-cn red">松鹤楼</div>
+          <div class="place-note">250-year-old restaurant. Order the squirrel-shaped mandarin fish — once in your life, here.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.625653,31.310672&name=松鹤楼&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.297825, 120.634168, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">20:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Master of the Nets Garden</div>
+          <div class="place-cn red">网师园</div>
+          <div class="place-note">Night tour — red lanterns, Kunqu opera in every courtyard. Book 2–3 days ahead.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.634168,31.297825&name=网师园&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-group">
+    <div class="day-group-header">
+      <span class="day-label">Day 6</span>
+      <span class="day-date">Mon, 25 May</span>
+      <span class="day-theme">The great gardens — best day (Monday crowds gone)</span>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.324223, 120.62997, 15)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">08:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Humble Administrator's Garden</div>
+          <div class="place-cn red">拙政园</div>
+          <div class="place-note">China's largest classical garden. Be here at 08:30 opening. Pre-book on Trip.com — daily cap.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.62997,31.324223&name=拙政园&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.322878, 120.627791, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">11:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Suzhou Museum</div>
+          <div class="place-cn red">苏州博物馆</div>
+          <div class="place-note">I.M. Pei's masterpiece. Free entry — but reserve 7 days ahead, fills very fast.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.627791,31.322878&name=苏州博物馆&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.320801, 120.629648, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">14:30</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Lion Grove Garden</div>
+          <div class="place-cn red">狮子林</div>
+          <div class="place-note">5 min walk from Suzhou Museum. UNESCO rock-maze labyrinth. ¥40 entry.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.629648,31.320801&name=狮子林&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+
+    <div class="place-card" onclick="flyTo(31.321854, 120.629351, 16)">
+      <div class="place-left">
+        <div class="place-time-col"><span class="place-time">19:00</span></div>
+        <div class="place-divider"></div>
+        <div class="place-info">
+          <div class="place-name">Wumen Renjia</div>
+          <div class="place-cn red">吴门人家</div>
+          <div class="place-note">Traditional Suzhou banquet. Squirrel fish, osmanthus rice, braised pork. The perfect farewell dinner.</div>
+        </div>
+      </div>
+      <a class="amap-btn" href="https://uri.amap.com/marker?position=120.629351,31.321854&name=吴门人家&src=suzhou-itinerary&callnative=1" target="_blank" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="amap-btn-label">Open in<span class="amap-btn-cn">高德地图</span></span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /panel-suzhou -->
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer class="map-footer">
+  <div class="footer-col">
+    <strong>Outside China</strong>
+    The map above is a visual reference using Leaflet.js. Click any card to fly to that location. Works on VPN inside China too.
+  </div>
+  <div class="footer-col">
+    <strong>Inside China (no VPN needed)</strong>
+    Tap any <span style="background:#1677ff;color:#fff;padding:1px 6px;font-size:12px;">Open in 高德地图</span> button — opens the exact location in 高德地图 (Amap) in your browser or the Amap app. Works everywhere in China without VPN.
+  </div>
+  <div class="footer-col">
+    <strong>Note on coordinates</strong>
+    Amap uses China's GCJ-02 coordinate system. Pins may appear slightly offset (~50–200m) from their true GPS position — this is normal and expected. Navigate using the place name, not the pin alone.
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ════════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ─── DATA (all places for Leaflet) ───────────────────────────────────────
+const allPlaces = [
+  { city:'hangzhou', type:'hotel',     name:'Cheery Dragon Canal Hotel', cn:'杭州大运河非遗文化酒店', day:'Base · May 20–23',  time:'Check-in 14:00', note:'Grand Canal on your doorstep. Qiaoxi Historic Block steps away.', lat:30.315939, lng:120.139754 },
+  { city:'hangzhou', type:'hangzhou',  name:'Qiaoxi Historic Block',     cn:'桥西历史街区',            day:'Day 1 · 20 May',    time:'15:30',          note:'Ming & Qing warehouses. Knife, Umbrella & Fan Museums — all free.', lat:30.318718, lng:120.13732 },
+  { city:'hangzhou', type:'hangzhou',  name:'Broken Bridge & Bai Causeway', cn:'断桥 · 白堤',          day:'Day 2 · 21 May',    time:'08:00',          note:'Start of West Lake circuit. Best at dawn — fewest crowds.', lat:30.260939, lng:120.15097 },
+  { city:'hangzhou', type:'hangzhou',  name:'Three Pools Mirroring Moon', cn:'三潭印月',               day:'Day 2 · 21 May',    time:'13:30',          note:'Boat from the harbour — ¥70. The island on every 1-yuan note.', lat:30.238836, lng:120.145314 },
+  { city:'hangzhou', type:'hangzhou',  name:'Leifeng Pagoda',             cn:'雷峰塔',                  day:'Day 2 · 21 May',    time:'16:00',          note:'Panoramic West Lake views at sunset. ¥40 entry.', lat:30.2315677, lng:120.149695 },
+  { city:'hangzhou', type:'hangzhou',  name:'Hefang Street',              cn:'河坊街',                  day:'Day 2 · 21 May',    time:'19:00',          note:'Old commercial street — snacks, medicine, osmanthus treats.', lat:30.24012, lng:120.17249 },
+  { city:'hangzhou', type:'hangzhou',  name:'Lingyin Temple',             cn:'灵隐寺',                  day:'Day 3 · 22 May',    time:'08:30',          note:'Founded 328 AD. Reserve via WeChat day before. ¥75.', lat:30.240831, lng:120.101481 },
+  { city:'hangzhou', type:'hangzhou',  name:'Longjing Village',           cn:'龙井村',                  day:'Day 3 · 22 May',    time:'12:00',          note:'Lunch at tea farmer\'s home — tea-smoked chicken, Longjing throughout.', lat:30.21887, lng:120.10552 },
+  { city:'hangzhou', type:'hangzhou',  name:'Meijiawu Tea Plantation',    cn:'梅家坞茶园',              day:'Day 3 · 22 May',    time:'14:00',          note:'Dragon Well terraces. May = just after spring harvest.', lat:30.244103, lng:120.115148 },
+  { city:'suzhou',   type:'hotel',     name:'Cendre Hotel',               cn:'欣得酒店（苏州虎丘店）',   day:'Base · May 23–26',  time:'Check-in 12:00', note:'99 Heyuan Road (和园路), Gusu District. 10 min from Suzhou Station.', lat:31.321968, lng:120.581085 },
+  { city:'suzhou',   type:'suzhou',    name:'Pingjiang Road',             cn:'平江路',                  day:'Day 4 · 23 May',    time:'14:00',          note:'700-year-old canal street. Boat ride ~¥80. Pingtan in the evening.', lat:31.309589, lng:120.634803 },
+  { city:'suzhou',   type:'suzhou',    name:'Tiger Hill',                 cn:'虎丘',                    day:'Day 5 · 24 May',    time:'09:00',          note:'Go early. Yunyan Pagoda — 1,000 years old, leaning north. ¥80.', lat:31.335795, lng:120.580404 },
+  { city:'suzhou',   type:'suzhou',    name:'Shantang Street',            cn:'山塘街',                  day:'Day 5 · 24 May',    time:'11:30',          note:'Canal boat from Tiger Hill. Lunch at a noodle shop.', lat:31.31622, lng:120.6035 },
+  { city:'suzhou',   type:'suzhou',    name:'Lingering Garden',           cn:'留园',                    day:'Day 5 · 24 May',    time:'14:00',          note:'UNESCO. 6.5m Taihu stone. ¥55.', lat:31.3157066, lng:120.5925704 },
+  { city:'suzhou',   type:'suzhou',    name:'Songhelou Restaurant',       cn:'松鹤楼',                  day:'Day 5 · 24 May',    time:'19:00',          note:'250-year-old restaurant. Order the squirrel-shaped mandarin fish.', lat:31.310672, lng:120.625653 },
+  { city:'suzhou',   type:'suzhou',    name:'Master of the Nets Garden',  cn:'网师园',                  day:'Day 5 · 24 May',    time:'20:30',          note:'Night tour — red lanterns, Kunqu opera. Book 2–3 days ahead.', lat:31.297825, lng:120.634168 },
+  { city:'suzhou',   type:'suzhou',    name:"Humble Administrator's Garden", cn:'拙政园',               day:'Day 6 · 25 May',    time:'08:30',          note:"China's largest classical garden. Pre-book. Daily cap.", lat:31.324223, lng:120.62997 },
+  { city:'suzhou',   type:'suzhou',    name:'Suzhou Museum',              cn:'苏州博物馆',               day:'Day 6 · 25 May',    time:'11:30',          note:'I.M. Pei. Free — but reserve 7 days ahead.', lat:31.322878, lng:120.627791 },
+  { city:'suzhou',   type:'suzhou',    name:'Lion Grove Garden',          cn:'狮子林',                  day:'Day 6 · 25 May',    time:'14:30',          note:'UNESCO rock maze. 5 min from Suzhou Museum. ¥40.', lat:31.320801, lng:120.629648 },
+  { city:'suzhou',   type:'suzhou',    name:'Wumen Renjia',               cn:'吴门人家',                day:'Day 6 · 25 May',    time:'19:00',          note:'Traditional Suzhou banquet. Squirrel fish, osmanthus rice, braised pork.', lat:31.321854, lng:120.629351 },
+];
+
+const colours = { hangzhou:'#3a5a4d', suzhou:'#9c2a2a', hotel:'#a07c3a' };
+const labels  = { hangzhou:'杭', suzhou:'苏', hotel:'宿' };
+
+// ─── LEAFLET INIT ────────────────────────────────────────────────────────
+const map = L.map('leaflet-map', {
+  center: [30.9, 120.37],
+  zoom: 8,
+  zoomControl: true
+});
+
+L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://stamen.com">Stamen</a> © <a href="https://openstreetmap.org">OSM</a>',
+  maxZoom: 18
+}).addTo(map);
+
+// ─── MARKERS ────────────────────────────────────────────────────────────
+function makeIcon(type) {
+  const c = colours[type], l = labels[type], s = type === 'hotel' ? 36 : 30;
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:${s}px;height:${s}px;background:${c};border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid rgba(255,255,255,.7);box-shadow:2px 2px 6px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-family:'Noto Serif SC',serif;font-size:${type==='hotel'?13:10}px;font-weight:500;color:#fff;line-height:1;">${l}</span></div>`,
+    iconSize: [s, s], iconAnchor: [s/2, s], popupAnchor: [0, -s]
+  });
+}
+
+const leafletMarkers = {};
+
+allPlaces.forEach((p, i) => {
+  const band = p.type === 'hotel' ? 'gold' : p.city;
+  const cnClass = p.type === 'hotel' ? 'gold' : (p.city === 'suzhou' ? 'red' : '');
+  const amapUrl = `https://uri.amap.com/marker?position=${p.lng},${p.lat}&name=${encodeURIComponent(p.cn)}&src=itinerary&callnative=1`;
+
+  const popup = `
+    <div>
+      <div class="popup-band ${band}"></div>
+      <div class="popup-body">
+        <div class="popup-day">${p.day}</div>
+        <div class="popup-name">${p.name}</div>
+        <div class="popup-cn-sm ${cnClass}">${p.cn}</div>
+        <div class="popup-note-sm">${p.note}</div>
+        <a class="popup-amap" href="${amapUrl}" target="_blank">Open in 高德地图 →</a>
+      </div>
+    </div>`;
+
+  const m = L.marker([p.lat, p.lng], { icon: makeIcon(p.type) })
+    .bindPopup(popup, { maxWidth: 270, closeButton: false })
+    .addTo(map);
+
+  leafletMarkers[i] = m;
+});
+
+// ─── FLY-TO (called from card clicks) ───────────────────────────────────
+function flyTo(lat, lng, zoom) {
+  map.flyTo([lat, lng], zoom, { duration: 1.2 });
+  // Open matching marker popup after fly
+  const idx = allPlaces.findIndex(p => Math.abs(p.lat - lat) < 0.0001 && Math.abs(p.lng - lng) < 0.0001);
+  if (idx >= 0) {
+    setTimeout(() => leafletMarkers[idx].openPopup(), 1300);
+  }
+  // Scroll to top so map is visible
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── TAB SWITCHING ───────────────────────────────────────────────────────
+function showCity(city, tabEl) {
+  // Panels
+  document.querySelectorAll('.places-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`panel-${city}`).classList.add('active');
+  // Tabs
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+  // Fit map to that city's markers
+  const coords = allPlaces.filter(p => p.city === city).map(p => [p.lat, p.lng]);
+  if (coords.length) map.flyToBounds(coords, { padding: [48, 48], duration: 1.0 });
+}
+</script>
+
+</body>
+</html>

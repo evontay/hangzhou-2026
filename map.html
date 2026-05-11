@@ -93,30 +93,6 @@ body {
   font-weight: 500;
 }
 
-/* China notice badge */
-.china-notice {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: var(--amap-bg);
-  border: 1px solid var(--amap-blue);
-  font-size: 13px;
-  color: var(--ink-soft);
-  max-width: 360px;
-}
-
-.china-notice-flag { font-size: 20px; flex-shrink: 0; }
-
-.china-notice-text strong {
-  display: block;
-  color: var(--amap-blue);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
 
 /* ─── MAP AREA ─── */
 .map-area {
@@ -241,12 +217,9 @@ body {
 
 /* Place card */
 .place-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
+  display: block;
   padding: 18px 32px;
   border-bottom: 1px solid var(--mist-light);
-  align-items: center;
   transition: background 0.15s;
   cursor: pointer;
 }
@@ -310,45 +283,18 @@ body {
   line-height: 1.6;
 }
 
-/* ─── AMAP BUTTON ─── */
-.amap-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background: var(--amap-blue);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+/* ─── AMAP TEXT LINK ─── */
+.amap-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--jade);
   text-decoration: none;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s, transform 0.1s;
-  font-family: 'Source Serif 4', Georgia, serif;
-  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  font-family: 'Noto Serif SC', serif;
 }
-
-.amap-btn:hover {
-  background: #0958d9;
-  transform: translateY(-1px);
-}
-
-.amap-btn:active { transform: translateY(0); }
-
-.amap-btn svg {
-  width: 14px; height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-.amap-btn-label { display: flex; flex-direction: column; line-height: 1.2; }
-.amap-btn-cn { font-family: 'Noto Serif SC', serif; font-size: 11px; opacity: 0.85; font-weight: 400; }
+.amap-link:hover { color: var(--jade-deep); text-decoration: underline; }
 
 /* ─── FOOTER NOTE ─── */
 .map-footer {
@@ -412,15 +358,19 @@ body {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 640px) {
-  .page-header { padding: 16px 20px 14px; }
-  .china-notice { max-width: 100%; }
-  .map-area { height: 40vh; }
-  .day-group-header { padding: 12px 20px 8px; }
-  .place-card { padding: 14px 20px; gap: 10px; }
+  .page-header { padding: 14px 16px 12px; }
+  .map-area { height: 38vh; min-height: 240px; }
+  .city-tabs { top: 0; }
+  .day-group-header { padding: 10px 16px 8px; top: 47px; flex-wrap: wrap; gap: 6px; }
+  .day-theme { display: none; }
+  .place-card { padding: 12px 16px; }
   .place-name { font-size: 18px; }
-  .map-footer { padding: 20px; gap: 20px; }
-  .place-time { font-size: 16px; }
-  .amap-btn { padding: 7px 10px; }
+  .place-note { font-size: 13px; }
+  .place-time { font-size: 15px; }
+  .place-time-col { min-width: 44px; }
+  .map-footer { padding: 16px; gap: 16px; flex-direction: column; }
+  .footer-col { min-width: 0; }
+  .lang-switch { padding: 5px 10px; font-size: 10px; gap: 7px; }
 }
 </style>
 </head>
@@ -432,13 +382,6 @@ body {
   <div class="header-left">
     <h1>Hangzhou <em>&</em> Suzhou</h1>
     <div class="header-sub">May 2026 &nbsp;·&nbsp; 20 attractions &nbsp;·&nbsp; 7 days</div>
-  </div>
-  <div class="china-notice">
-    <div class="china-notice-flag">🇨🇳</div>
-    <div class="china-notice-text">
-      <strong>In China? Tap 高德地图</strong>
-      Each attraction has an "Open in 高德地图" button — works without VPN directly in the Amap app or browser.
-    </div>
   </div>
 </header>
 
@@ -964,6 +907,20 @@ function flyTo(lat, lng, zoom) {
   // Scroll to top so map is visible
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ─── REPLACE AMAP BUTTONS WITH TEXT LINKS ───────────────────────────────
+document.querySelectorAll('.place-card').forEach(function(card) {
+  var btn = card.querySelector('.amap-btn');
+  if (!btn) return;
+  var link = document.createElement('a');
+  link.className = 'amap-link';
+  link.href = btn.getAttribute('href');
+  link.target = '_blank';
+  link.textContent = '在高德地图中打开 →';
+  link.addEventListener('click', function(e) { e.stopPropagation(); });
+  card.querySelector('.place-info').appendChild(link);
+  btn.remove();
+});
 
 // ─── TAB SWITCHING ───────────────────────────────────────────────────────
 function showCity(city, tabEl) {
